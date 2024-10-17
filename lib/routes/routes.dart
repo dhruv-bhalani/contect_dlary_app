@@ -1,4 +1,5 @@
 import 'package:contect_dlary_app/screens/Detailpage/views/Detail.dart';
+import 'package:contect_dlary_app/screens/Detailpage/views/Edit/edit.dart';
 import 'package:contect_dlary_app/screens/addcontactPage/addcontactPage.dart';
 import 'package:contect_dlary_app/screens/countar/views/countar.dart';
 import 'package:contect_dlary_app/screens/homepage/home/homepage.dart';
@@ -16,5 +17,6 @@ class AppRoutes {
     '/addcontact': (context) => const Addcontactpage(),
     '/countar': (context) => const Countar(),
     '/Detail': (context) => const Detail(),
+    '/Edit': (context) => const Edit(),
   };
 }

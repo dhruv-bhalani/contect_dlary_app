@@ -23,7 +23,10 @@ class _HomepageState extends State<Homepage> {
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
-              Navigator.of(context).pushNamed('/Detail', arguments: index);
+              context.read<ContactProvider>().setSelectedIndex(index);
+              Navigator.of(context).pushNamed('/Detail',
+                  arguments:
+                      context.read<ContactProvider>().Contactlist[index]);
             },
             onLongPress: () {
               context.read<ContactProvider>().deletecontact(index);

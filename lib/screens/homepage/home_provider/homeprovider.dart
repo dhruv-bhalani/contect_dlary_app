@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 class ContactProvider with ChangeNotifier {
   List<Contactmodel> Contactlist = [
     Contactmodel(
-        name: 'Abhishek', number: '1234567890', image: 'lib/images/1.jpg'),
-    Contactmodel(
-        name: 'Shubham', number: '1234567890', image: 'lib/images/2.jpg'),
+        name: "sai", number: "1234567890", image: "assets/image/1.jpg"),
   ];
+  int SelectedIndex = 0;
+
+  void setSelectedIndex(int index) {
+    SelectedIndex = index;
+    notifyListeners();
+  }
 
   void addcontact(Contactmodel contact) {
     Contactlist.add(contact);
@@ -20,7 +24,7 @@ class ContactProvider with ChangeNotifier {
   }
 
   void updatecontact(Contactmodel contact) {
-    Contactlist[Contactlist.indexOf(contact)];
+    Contactlist[SelectedIndex] = contact;
     notifyListeners();
   }
 }
