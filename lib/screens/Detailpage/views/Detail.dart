@@ -4,7 +4,7 @@ import 'package:contect_dlary_app/screens/homepage/home_provider/homeprovider.da
 import 'package:contect_dlary_app/screens/homepage/model/model.dart';
 import 'package:contect_dlary_app/utils/extension.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -31,7 +31,23 @@ class _DetailState extends State<Detail> {
         actions: [
           IconButton(
             onPressed: () {
-              // Navigator.of(context).pushNamed('/Edit', arguments: detail);
+              context.read<ContactProvider>().Favoritecontact(detail);
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.favorite),
+          ),
+          IconButton(
+            onPressed: () {
+              context.read<ContactProvider>().hidecontact(detail);
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.lock),
+          ),
+          IconButton(
+            onPressed: () {
+              // txtname.text = detail.name!;
+              // txtphone.text = detail.number!;
+              // txtemail.text = detail.email!;
               showDialog(
                   context: context,
                   builder: (context) {
@@ -41,7 +57,7 @@ class _DetailState extends State<Detail> {
                     return AlertDialog(
                       actions: [
                         10.height,
-                        Center(
+                        const Center(
                           child: Text("Edit"),
                         ),
                         10.height,
@@ -49,7 +65,7 @@ class _DetailState extends State<Detail> {
                           keyboardType: TextInputType.name,
                           controller: txtname,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.person),
+                            prefixIcon: const Icon(Icons.person),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -62,7 +78,7 @@ class _DetailState extends State<Detail> {
                           keyboardType: TextInputType.number,
                           controller: txtphone,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.phone),
+                            prefixIcon: const Icon(Icons.phone),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -74,7 +90,7 @@ class _DetailState extends State<Detail> {
                           keyboardType: TextInputType.emailAddress,
                           controller: txtemail,
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.email),
+                            prefixIcon: const Icon(Icons.email),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30.0),
                             ),
@@ -96,9 +112,8 @@ class _DetailState extends State<Detail> {
                               image: detail.image,
                             );
                             context
-                                .read<ContactProvider>()
+                                .watch<ContactProvider>()
                                 .updatecontact(contact);
-                            Navigator.of(context).pop();
                           },
                           child: const Text('update'),
                         ),
@@ -111,7 +126,7 @@ class _DetailState extends State<Detail> {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
             CircleAvatar(
@@ -129,7 +144,10 @@ class _DetailState extends State<Detail> {
             ),
             ListTile(
               title: Text("${detail.name}"),
-              leading: Icon(Icons.person),
+              leading: IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.person),
+              ),
             ),
             10.height,
             const Text(
@@ -137,17 +155,15 @@ class _DetailState extends State<Detail> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             ListTile(
-                title: Text("${detail.number}"),
-                leading: IconButton(
-                  onPressed: () async {
-                    Uri phoneno = Uri.parse('tel:${detail.number}');
-                    await launchUrl(phoneno);
-                  },
-                  icon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.phone),
-                  ),
-                )),
+              title: Text("${detail.number}"),
+              leading: IconButton(
+                onPressed: () async {
+                  Uri phone = Uri.parse('tel:${detail.number}');
+                  await launchUrl(phone);
+                },
+                icon: const Icon(Icons.phone),
+              ),
+            ),
             10.height,
             const Text(
               'Email',
@@ -160,7 +176,7 @@ class _DetailState extends State<Detail> {
                   Uri email = Uri.parse('mailto:${detail.email}');
                   await launchUrl(email);
                 },
-                icon: Icon(Icons.email),
+                icon: const Icon(Icons.email),
               ),
             ),
           ],

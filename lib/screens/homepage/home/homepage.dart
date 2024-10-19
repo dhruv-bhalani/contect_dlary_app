@@ -16,7 +16,23 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Home')),
+        title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              bool islock = await context.read<ContactProvider>().lockcontact();
+              Navigator.of(context).pushNamed('/favorites');
+            },
+            icon: const Icon(Icons.favorite),
+          ),
+          IconButton(
+            onPressed: () async {
+              bool islock = await context.read<ContactProvider>().lockcontact();
+              Navigator.of(context).pushNamed('/hide');
+            },
+            icon: const Icon(Icons.lock),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: context.watch<ContactProvider>().Contactlist.length,
@@ -35,7 +51,7 @@ class _HomepageState extends State<Homepage> {
                 "${context.watch<ContactProvider>().Contactlist[index].name}"),
             subtitle: Text(
               "${context.watch<ContactProvider>().Contactlist[index].number}",
-              style: TextStyle(fontSize: 15),
+              style: const TextStyle(fontSize: 15),
             ),
             leading: CircleAvatar(
               radius: 20,
