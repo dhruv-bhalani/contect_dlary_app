@@ -1,5 +1,5 @@
 import 'package:contect_dlary_app/screens/android/Detailpage/views/Detail.dart';
-import 'package:contect_dlary_app/screens/android/Detailpage/views/privatecontact/hide.dart';
+import 'package:contect_dlary_app/screens/android/hide/hide.dart';
 import 'package:contect_dlary_app/screens/android/addcontactPage/addcontactPage.dart';
 import 'package:contect_dlary_app/screens/android/countar/views/countar.dart';
 import 'package:contect_dlary_app/screens/android/favorites/favorites.dart';
