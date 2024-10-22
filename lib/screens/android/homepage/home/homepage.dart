@@ -1,7 +1,9 @@
 import 'dart:io';
 
-import 'package:contect_dlary_app/screens/homepage/home_provider/homeprovider.dart';
+import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
+
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
 class Homepage extends StatefulWidget {
@@ -20,17 +22,24 @@ class _HomepageState extends State<Homepage> {
         actions: [
           IconButton(
             onPressed: () async {
-              bool islock = await context.read<ContactProvider>().lockcontact();
-              Navigator.of(context).pushNamed('/favorites');
-            },
-            icon: const Icon(Icons.favorite),
-          ),
-          IconButton(
-            onPressed: () async {
-              bool islock = await context.read<ContactProvider>().lockcontact();
-              Navigator.of(context).pushNamed('/hide');
+              bool islock = await context.read<ContactProvider>().LockContact();
+              if (islock) {
+                Navigator.pushNamed(context, '/hide');
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Contact Locked'),
+                  ),
+                );
+              }
             },
             icon: const Icon(Icons.lock),
+          ),
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/favorites');
+            },
+            icon: const Icon(Icons.star),
           ),
         ],
       ),
@@ -57,8 +66,7 @@ class _HomepageState extends State<Homepage> {
               radius: 20,
               foregroundImage: FileImage(
                 File(
-                    context.watch<ContactProvider>().Contactlist[index].image ??
-                        ''),
+                    context.watch<ContactProvider>().Contactlist[index].image!),
               ),
             ),
           );
@@ -68,7 +76,6 @@ class _HomepageState extends State<Homepage> {
         onPressed: () {
           Navigator.of(context).pushNamed('/addcontact');
         },
-        backgroundColor: Colors.white,
         child: const Icon(Icons.add),
       ),
     );

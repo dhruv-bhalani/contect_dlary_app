@@ -1,46 +1,46 @@
 import 'dart:io';
 
-import 'package:contect_dlary_app/screens/homepage/home_provider/homeprovider.dart';
+import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Favorites extends StatefulWidget {
-  const Favorites({super.key});
+class Hide extends StatefulWidget {
+  const Hide({super.key});
 
   @override
-  State<Favorites> createState() => _FavoritesState();
+  State<Hide> createState() => _HideState();
 }
 
-class _FavoritesState extends State<Favorites> {
+class _HideState extends State<Hide> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorite Contact'),
+        title: const Text('Hide Contact'),
       ),
       body: ListView.builder(
-        itemCount: context.watch<ContactProvider>().favoritecontact.length,
+        itemCount: context.watch<ContactProvider>().privatecontact.length,
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
               Navigator.of(context).pushNamed('/Detail',
                   arguments:
-                      context.read<ContactProvider>().favoritecontact[index]);
+                      context.read<ContactProvider>().privatecontact[index]);
             },
             onLongPress: () {
-              context.read<ContactProvider>().unfavoritecontact(
-                  context.read<ContactProvider>().favoritecontact[index]);
+              context.read<ContactProvider>().unhidecontact(
+                  context.read<ContactProvider>().privatecontact[index]);
             },
             trailing: IconButton(
               onPressed: () {
-                context.read<ContactProvider>().favoritedeletecontact(index);
+                context.read<ContactProvider>().hidedeletecontact(index);
               },
               icon: const Icon(Icons.delete),
             ),
             title: Text(
-                "${context.watch<ContactProvider>().favoritecontact[index].name}"),
+                "${context.watch<ContactProvider>().privatecontact[index].name}"),
             subtitle: Text(
-              "${context.watch<ContactProvider>().favoritecontact[index].number}",
+              "${context.watch<ContactProvider>().privatecontact[index].number}",
               style: const TextStyle(fontSize: 15),
             ),
             leading: CircleAvatar(
@@ -48,7 +48,7 @@ class _FavoritesState extends State<Favorites> {
               foregroundImage: FileImage(
                 File(context
                         .watch<ContactProvider>()
-                        .favoritecontact[index]
+                        .privatecontact[index]
                         .image ??
                     ''),
               ),

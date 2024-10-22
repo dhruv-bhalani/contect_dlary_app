@@ -1,12 +1,17 @@
-import 'package:contect_dlary_app/screens/homepage/model/model.dart';
+import 'package:contect_dlary_app/screens/android/homepage/model/model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 
 class ContactProvider with ChangeNotifier {
   int SelectedIndex = 0;
-
+  String? imagePath;
   List<Contactmodel> Contactlist = [
-    Contactmodel(name: 'Himanshu', number: '1234567890'),
+    Contactmodel(
+        name: 'Himanshu',
+        number: '1234567890',
+        image: 'lib/images/1.jpg',
+        email: 'himanshu@123'),
   ];
 
   void setSelectedIndex(int index) {
@@ -17,13 +22,6 @@ class ContactProvider with ChangeNotifier {
   List<Contactmodel> privatecontact = [];
 
   List<Contactmodel> favoritecontact = [];
-
-  // void someMethod(Contactmodel contact) {
-  //   (Favoritecontact != hidecontact)
-  //       ? Favoritecontact(contact)
-  //       : hidecontact(contact);
-  //   notifyListeners();
-  // }
 
   void Favoritecontact(Contactmodel contact) {
     favoritecontact.add(contact);
@@ -65,7 +63,7 @@ class ContactProvider with ChangeNotifier {
   }
 
   void favoritedeletecontact(int index) {
-    Contactlist.remove(index);
+    favoritecontact.removeAt(index);
     notifyListeners();
   }
 
@@ -74,25 +72,20 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<bool> lockcontact() async {
+  Future<bool> LockContact() async {
     LocalAuthentication auth = LocalAuthentication();
-    bool isBiometricAvailable = await auth.canCheckBiometrics;
-    bool isDeviceSupported = await auth.isDeviceSupported();
-
-    if (isBiometricAvailable && isDeviceSupported) {
-      List<BiometricType> availableBiometrics =
-          await auth.getAvailableBiometrics();
-      if (availableBiometrics.isEmpty) {
+    bool isBiometrics = await auth.canCheckBiometrics;
+    bool isDevice = await auth.isDeviceSupported();
+    if (isBiometrics && isDevice) {
+      List<BiometricType> types = await auth.getAvailableBiometrics();
+      if (types.isEmpty) {
         return false;
       } else {
-        await auth.authenticate(
-          localizedReason: 'Scan your fingerprint to authenticate',
-        );
+        return await auth.authenticate(
+            localizedReason: "Please authenticate to lock contact");
       }
     } else {
       return false;
     }
-    return false;
-    notifyListeners();
   }
 }

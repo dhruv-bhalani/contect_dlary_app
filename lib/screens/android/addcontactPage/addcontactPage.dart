@@ -1,8 +1,7 @@
 import 'dart:io';
-import 'dart:math';
 
-import 'package:contect_dlary_app/screens/homepage/home_provider/homeprovider.dart';
-import 'package:contect_dlary_app/screens/homepage/model/model.dart';
+import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
+import 'package:contect_dlary_app/screens/android/homepage/model/model.dart';
 import 'package:contect_dlary_app/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -50,20 +49,21 @@ class _AddcontactpageState extends State<Addcontactpage> {
         padding: const EdgeInsets.all(10),
         child: Theme(
           data: ThemeData(
-            scaffoldBackgroundColor: Colors.red,
-            shadowColor: Colors.blue,
+            scaffoldBackgroundColor: Colors.green.shade600,
+            shadowColor: Colors.green.shade600,
             // primaryColor: Colors.red,
-            cardColor: Colors.red,
-            hoverColor: Colors.red,
-            splashColor: Colors.red,
-            canvasColor: Colors.red,
-            disabledColor: Colors.red,
-            dividerColor: Colors.red,
-            highlightColor: Colors.red,
+            cardColor: Colors.green.shade600,
+            hoverColor: Colors.green.shade600,
+            splashColor: Colors.green.shade600,
+            canvasColor: Colors.green.shade600,
+            disabledColor: Colors.green.shade600,
+            dividerColor: Colors.green.shade600,
+            highlightColor: Colors.green.shade600,
+            colorSchemeSeed: Colors.green.shade600,
           ),
           child: Stepper(
             currentStep: currentStep,
-            connectorColor: const WidgetStatePropertyAll(Colors.red),
+            connectorColor: WidgetStatePropertyAll(Colors.green.shade600),
             onStepContinue: () {
               if (currentStep < 4) {
                 setState(() {
@@ -85,16 +85,16 @@ class _AddcontactpageState extends State<Addcontactpage> {
                   children: [
                     (imagePath == null)
                         ? const CircleAvatar(
-                            radius: 50,
+                            radius: 90,
                           )
                         : CircleAvatar(
-                            radius: 50,
+                            radius: 90,
                             backgroundImage: FileImage(
                               File(imagePath!),
                             ),
                           ),
                     10.height,
-                    FloatingActionButton.small(
+                    ElevatedButton(
                       onPressed: () {
                         showDialog(
                           // barrierDismissible: false,
@@ -135,7 +135,9 @@ class _AddcontactpageState extends State<Addcontactpage> {
                           ),
                         );
                       },
-                      child: const Icon(Icons.add),
+                      child: const Text(
+                        'Select Image',
+                      ),
                     ),
                   ],
                 ),
@@ -202,19 +204,17 @@ class _AddcontactpageState extends State<Addcontactpage> {
                     );
                     context.read<ContactProvider>().addcontact(contact);
                     Navigator.of(context).pop();
-                    // ScaffoldMessenger.of(context).showSnackBar(
-                    //   const SnackBar(
-                    //     content: Text("Added Successfully"),
-                    //     shape: StadiumBorder(
-                    //       side: BorderSide(
-                    //         color: Colors.white,
-                    //         // width: 2,
-                    //         style: BorderStyle.none,
-                    //       ),
-                    //     ),
-                    //   ),
-                    // );
-                    // contact.read<>
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Added Successfully"),
+                        shape: StadiumBorder(
+                          side: BorderSide(
+                            color: Colors.white,
+                            style: BorderStyle.none,
+                          ),
+                        ),
+                      ),
+                    );
                   },
                   child: const Text('save'),
                 ),

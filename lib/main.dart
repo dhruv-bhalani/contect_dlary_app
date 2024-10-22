@@ -1,6 +1,7 @@
 import 'package:contect_dlary_app/routes/routes.dart';
-import 'package:contect_dlary_app/screens/countar/countar_provider/countar_provider.dart';
-import 'package:contect_dlary_app/screens/homepage/home_provider/homeprovider.dart';
+import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
+import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.red,
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.green.shade600,
           ),
           textTheme: const TextTheme(
             bodyMedium: TextStyle(
@@ -38,8 +39,16 @@ class MyApp extends StatelessWidget {
               // fontFamily:
             ),
           ),
-          floatingActionButtonTheme: const FloatingActionButtonThemeData(
-            backgroundColor: Colors.red,
+          floatingActionButtonTheme: FloatingActionButtonThemeData(
+            backgroundColor: Colors.green.shade600,
+          ),
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+            backgroundColor: Colors.green.shade600,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green.shade600,
+            ),
           ),
         ),
         // darkTheme: ThemeData.dark().copyWith(

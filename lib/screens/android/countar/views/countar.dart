@@ -1,4 +1,4 @@
-import 'package:contect_dlary_app/screens/countar/countar_provider/countar_provider.dart';
+import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
 import 'package:contect_dlary_app/utils/extension.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -19,7 +19,7 @@ class _SplashscreenState extends State<Splashscreen> {
         if (value == true) {
           Timer(
             const Duration(seconds: 3),
-            () => Navigator.pushReplacementNamed(context, '/home'),
+            () => Navigator.pushReplacementNamed(context, '/iOS'),
           );
         } else {
           Timer(
