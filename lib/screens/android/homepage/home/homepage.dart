@@ -1,19 +1,23 @@
 import 'dart:io';
+
 import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
-
   @override
   State<Homepage> createState() => _HomepageState();
 }
 
 class _HomepageState extends State<Homepage> {
   GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+  late ContactProvider cR = ContactProvider();
+  late ContactProvider cW = ContactProvider();
   @override
   Widget build(BuildContext context) {
+    cR = context.read<ContactProvider>();
+    cW = context.watch<ContactProvider>();
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -39,6 +43,12 @@ class _HomepageState extends State<Homepage> {
               Navigator.pushNamed(context, '/favorites');
             },
             icon: const Icon(Icons.star),
+          ),
+          Switch(
+            value: context.watch<ContactProvider>().isAndiroid,
+            onChanged: (value) {
+              context.read<ContactProvider>().changeisAndiroid();
+            },
           ),
         ],
       ),
@@ -77,6 +87,18 @@ class _HomepageState extends State<Homepage> {
               },
             ),
           ),
+          TextButton.icon(
+            onPressed: () async {
+              DateTime? dT = await showDatePicker(
+                context: context,
+                firstDate: DateTime(1900),
+                lastDate: DateTime(3000),
+              );
+              cW.changeDatetime(dT!);
+            },
+            label: Text("${cR.date.day}/${cR.date.month}/${cR.date.year}"),
+            icon: const Icon(Icons.date_range),
+          ),
           ElevatedButton(
             onPressed: () {
               showModalBottomSheet(
@@ -86,8 +108,7 @@ class _HomepageState extends State<Homepage> {
                     height: 200,
                     color: Colors.white,
                     child: const Center(
-                      child: Text('dhruv'
-                          ''),
+                      child: Text('dhruv'),
                     ),
                   );
                 },

@@ -11,11 +11,16 @@ class ContactProvider with ChangeNotifier {
   List<Contactmodel> favoriteContact = [];
   List<Contactmodel> contactList = [
     Contactmodel(
-        name: 'Himanshu',
+        name: 'Himansh',
         number: '1234567890',
         image: 'lib/images/1.jpg',
         email: 'himanshu@123'),
   ];
+  DateTime date = DateTime.now();
+  void changeDatetime(DateTime datetime) {
+    date = datetime;
+    notifyListeners();
+  }
 
   void setSelectedIndex(int index) {
     SelectedIndex = index;

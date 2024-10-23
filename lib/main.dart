@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:contect_dlary_app/routes/routes.dart';
 import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
 import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
-import 'package:contect_dlary_app/screens/iOS/iOS_homepage.dart';
+import 'package:contect_dlary_app/screens/iOS/homepage.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -49,6 +49,11 @@ class MyApp extends StatelessWidget {
                         backgroundColor: Colors.green.shade600,
                       ),
                     ),
+                    textButtonTheme: TextButtonThemeData(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.green.shade600,
+                      ),
+                    ),
                   ),
                   // darkTheme: ThemeData.dark().copyWith(
                   //   // scaffoldBackgroundColor: Colors.blue,
@@ -82,7 +87,7 @@ class MyApp extends StatelessWidget {
                   theme: CupertinoThemeData(
                     brightness: Brightness.light,
                   ),
-                  home: IosHomepage(),
+                  home: iOSHomepage(),
                 );
         },
       ),
