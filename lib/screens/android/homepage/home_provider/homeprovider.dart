@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 
 class ContactProvider with ChangeNotifier {
+  bool isAndiroid = true;
   int SelectedIndex = 0;
   String? imagePath;
-  List<Contactmodel> Contactlist = [
+  List<Contactmodel> privateContact = [];
+  List<Contactmodel> favoriteContact = [];
+  List<Contactmodel> contactList = [
     Contactmodel(
         name: 'Himanshu',
         number: '1234567890',
@@ -19,56 +22,52 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  List<Contactmodel> privatecontact = [];
-
-  List<Contactmodel> favoritecontact = [];
-
   void Favoritecontact(Contactmodel contact) {
-    favoritecontact.add(contact);
-    Contactlist.removeAt(SelectedIndex);
-    notifyListeners();
-  }
-
-  void unfavoritecontact(Contactmodel contact) {
-    favoritecontact.removeAt(SelectedIndex);
-    Contactlist.add(contact);
-    notifyListeners();
-  }
-
-  void hidecontact(Contactmodel contact) {
-    privatecontact.add(contact);
-    Contactlist.removeAt(SelectedIndex);
-    notifyListeners();
-  }
-
-  void unhidecontact(Contactmodel contact) {
-    privatecontact.removeAt(SelectedIndex);
-    Contactlist.add(contact);
-    notifyListeners();
-  }
-
-  void addcontact(Contactmodel contact) {
-    Contactlist.add(contact);
-    notifyListeners();
-  }
-
-  void deletecontact(int index) {
-    Contactlist.removeAt(index);
-    notifyListeners();
-  }
-
-  void hidedeletecontact(int index) {
-    Contactlist.remove(index);
+    favoriteContact.add(contact);
+    contactList.removeAt(SelectedIndex);
     notifyListeners();
   }
 
   void favoritedeletecontact(int index) {
-    favoritecontact.removeAt(index);
+    favoriteContact.removeAt(index);
+    notifyListeners();
+  }
+
+  void unfavoritecontact(Contactmodel contact) {
+    favoriteContact.removeAt(SelectedIndex);
+    contactList.add(contact);
+    notifyListeners();
+  }
+
+  void hidecontact(Contactmodel contact) {
+    privateContact.add(contact);
+    contactList.removeAt(SelectedIndex);
+    notifyListeners();
+  }
+
+  void unhidecontact(Contactmodel contact) {
+    privateContact.removeAt(SelectedIndex);
+    contactList.add(contact);
+    notifyListeners();
+  }
+
+  void hidedeletecontact(int index) {
+    privateContact.removeAt(index);
+    notifyListeners();
+  }
+
+  void addcontact(Contactmodel contact) {
+    contactList.add(contact);
+    notifyListeners();
+  }
+
+  void deletecontact(int index) {
+    contactList.removeAt(index);
     notifyListeners();
   }
 
   void updatecontact(Contactmodel contact) {
-    Contactlist[SelectedIndex] = contact;
+    contactList[SelectedIndex] = contact;
     notifyListeners();
   }
 
@@ -87,5 +86,10 @@ class ContactProvider with ChangeNotifier {
     } else {
       return false;
     }
+  }
+
+  void changeisAndiroid() {
+    isAndiroid = !isAndiroid;
+    notifyListeners();
   }
 }

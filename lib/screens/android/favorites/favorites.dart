@@ -19,17 +19,17 @@ class _FavoritesState extends State<Favorites> {
         title: const Text('Favorite Contact'),
       ),
       body: ListView.builder(
-        itemCount: context.watch<ContactProvider>().favoritecontact.length,
+        itemCount: context.watch<ContactProvider>().favoriteContact.length,
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
               Navigator.of(context).pushNamed('/Detail',
                   arguments:
-                      context.read<ContactProvider>().favoritecontact[index]);
+                      context.read<ContactProvider>().favoriteContact[index]);
             },
             onLongPress: () {
               context.read<ContactProvider>().unfavoritecontact(
-                  context.read<ContactProvider>().favoritecontact[index]);
+                  context.read<ContactProvider>().favoriteContact[index]);
             },
             trailing: IconButton(
               onPressed: () {
@@ -38,9 +38,9 @@ class _FavoritesState extends State<Favorites> {
               icon: const Icon(Icons.delete),
             ),
             title: Text(
-                "${context.watch<ContactProvider>().favoritecontact[index].name}"),
+                "${context.watch<ContactProvider>().favoriteContact[index].name}"),
             subtitle: Text(
-              "${context.watch<ContactProvider>().favoritecontact[index].number}",
+              "${context.watch<ContactProvider>().favoriteContact[index].number}",
               style: const TextStyle(fontSize: 15),
             ),
             leading: CircleAvatar(
@@ -48,7 +48,7 @@ class _FavoritesState extends State<Favorites> {
               foregroundImage: FileImage(
                 File(context
                         .watch<ContactProvider>()
-                        .favoritecontact[index]
+                        .favoriteContact[index]
                         .image ??
                     ''),
               ),

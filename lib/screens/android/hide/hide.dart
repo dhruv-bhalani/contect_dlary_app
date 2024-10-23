@@ -19,17 +19,17 @@ class _HideState extends State<Hide> {
         title: const Text('Hide Contact'),
       ),
       body: ListView.builder(
-        itemCount: context.watch<ContactProvider>().privatecontact.length,
+        itemCount: context.watch<ContactProvider>().privateContact.length,
         itemBuilder: (context, index) {
           return ListTile(
             onTap: () {
               Navigator.of(context).pushNamed('/Detail',
                   arguments:
-                      context.read<ContactProvider>().privatecontact[index]);
+                      context.read<ContactProvider>().privateContact[index]);
             },
             onLongPress: () {
               context.read<ContactProvider>().unhidecontact(
-                  context.read<ContactProvider>().privatecontact[index]);
+                  context.read<ContactProvider>().privateContact[index]);
             },
             trailing: IconButton(
               onPressed: () {
@@ -38,9 +38,9 @@ class _HideState extends State<Hide> {
               icon: const Icon(Icons.delete),
             ),
             title: Text(
-                "${context.watch<ContactProvider>().privatecontact[index].name}"),
+                "${context.watch<ContactProvider>().privateContact[index].name}"),
             subtitle: Text(
-              "${context.watch<ContactProvider>().privatecontact[index].number}",
+              "${context.watch<ContactProvider>().privateContact[index].number}",
               style: const TextStyle(fontSize: 15),
             ),
             leading: CircleAvatar(
@@ -48,7 +48,7 @@ class _HideState extends State<Hide> {
               foregroundImage: FileImage(
                 File(context
                         .watch<ContactProvider>()
-                        .privatecontact[index]
+                        .privateContact[index]
                         .image ??
                     ''),
               ),
