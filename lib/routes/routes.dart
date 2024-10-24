@@ -7,7 +7,8 @@ import 'package:contect_dlary_app/screens/android/favorites/favorites.dart';
 import 'package:contect_dlary_app/screens/android/homepage/home/homepage.dart';
 import 'package:contect_dlary_app/screens/android/introduction/views/introduction.dart';
 import 'package:contect_dlary_app/screens/android/splashscreen/splashscreen.dart';
-import 'package:contect_dlary_app/screens/iOS/homepage.dart';
+import 'package:contect_dlary_app/screens/iOS/detail/detail.dart';
+import 'package:contect_dlary_app/screens/iOS/home/homepage.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -26,5 +27,6 @@ class AppRoutes {
 class AppRoutesiOS {
   static Map<String, WidgetBuilder> allRoutes = {
     '/': (context) => const iOSHomepage(),
+    '/iOSDetail': (context) => const IosDetailPage(),
   };
 }

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:contect_dlary_app/routes/routes.dart';
 import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
 import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
-import 'package:contect_dlary_app/screens/iOS/homepage.dart';
+import 'package:contect_dlary_app/screens/iOS/home/homepage.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
@@ -82,12 +82,12 @@ class MyApp extends StatelessWidget {
                       : ThemeMode.light,
                   routes: AppRoutes.allRoutes,
                 )
-              : const CupertinoApp(
+              : CupertinoApp(
                   debugShowCheckedModeBanner: false,
                   theme: CupertinoThemeData(
                     brightness: Brightness.light,
                   ),
-                  home: iOSHomepage(),
+                  routes: AppRoutesiOS.allRoutes,
                 );
         },
       ),

@@ -23,8 +23,8 @@ class _DetailState extends State<Detail> {
   TextEditingController txtemail = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    Contactmodel detail =
-        ModalRoute.of(context)!.settings.arguments as Contactmodel;
+    ContactModel detail =
+        ModalRoute.of(context)!.settings.arguments as ContactModel;
     context.watch<ContactProvider>().imagePath = detail.image;
     return Scaffold(
       appBar: AppBar(
@@ -101,7 +101,7 @@ class _DetailState extends State<Detail> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Contactmodel contact = Contactmodel(
+                            ContactModel contact = ContactModel(
                               name: txtname.text,
                               number: txtphone.text,
                               email: txtemail.text,

@@ -196,7 +196,7 @@ class _AddcontactpageState extends State<Addcontactpage> {
                     String email = txtemail.text;
                     String phone = txtphone.text;
 
-                    Contactmodel contact = Contactmodel(
+                    ContactModel contact = ContactModel(
                       name: name,
                       number: phone,
                       email: email,

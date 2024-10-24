@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 
 class ContactProvider with ChangeNotifier {
-  bool isAndiroid = true;
+  bool isAndiroid = false;
   int SelectedIndex = 0;
   String? imagePath;
-  List<Contactmodel> privateContact = [];
-  List<Contactmodel> favoriteContact = [];
-  List<Contactmodel> contactList = [
-    Contactmodel(
+  List<ContactModel> privateContact = [];
+  List<ContactModel> favoriteContact = [];
+  List<ContactModel> contactList = [
+    ContactModel(
         name: 'Himansh',
         number: '1234567890',
         image: 'lib/images/1.jpg',
@@ -27,7 +27,7 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void Favoritecontact(Contactmodel contact) {
+  void Favoritecontact(ContactModel contact) {
     favoriteContact.add(contact);
     contactList.removeAt(SelectedIndex);
     notifyListeners();
@@ -38,19 +38,19 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void unfavoritecontact(Contactmodel contact) {
+  void unfavoritecontact(ContactModel contact) {
     favoriteContact.removeAt(SelectedIndex);
     contactList.add(contact);
     notifyListeners();
   }
 
-  void hidecontact(Contactmodel contact) {
+  void hidecontact(ContactModel contact) {
     privateContact.add(contact);
     contactList.removeAt(SelectedIndex);
     notifyListeners();
   }
 
-  void unhidecontact(Contactmodel contact) {
+  void unhidecontact(ContactModel contact) {
     privateContact.removeAt(SelectedIndex);
     contactList.add(contact);
     notifyListeners();
@@ -61,7 +61,7 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void addcontact(Contactmodel contact) {
+  void addcontact(ContactModel contact) {
     contactList.add(contact);
     notifyListeners();
   }
@@ -71,7 +71,7 @@ class ContactProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void updatecontact(Contactmodel contact) {
+  void updatecontact(ContactModel contact) {
     contactList[SelectedIndex] = contact;
     notifyListeners();
   }
