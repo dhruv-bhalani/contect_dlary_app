@@ -5,19 +5,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class iOSHomepage extends StatefulWidget {
-  const iOSHomepage({super.key});
+class iOSFavvorites extends StatefulWidget {
+  const iOSFavvorites({super.key});
 
   @override
-  State<iOSHomepage> createState() => _iOSHomepageState();
+  State<iOSFavvorites> createState() => _iOSFavvoritesState();
 }
 
-class _iOSHomepageState extends State<iOSHomepage> {
+class _iOSFavvoritesState extends State<iOSFavvorites> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('Home'),
+        middle: Text('Favorites'),
         trailing: CupertinoSwitch(
           value: context.watch<ContactProvider>().isAndiroid,
           onChanged: (value) {
@@ -43,9 +43,9 @@ class _iOSHomepageState extends State<iOSHomepage> {
             },
             trailing: CupertinoButton(
               onPressed: () {
-                Navigator.pushNamed(context, '/favorites');
+                context.read<ContactProvider>().deletecontact(index);
               },
-              child: const Icon(CupertinoIcons.star_fill),
+              child: const Icon(CupertinoIcons.delete),
             ),
             title: Text(
                 "${context.watch<ContactProvider>().contactList[index].name}"),

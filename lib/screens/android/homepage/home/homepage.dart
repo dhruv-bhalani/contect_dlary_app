@@ -98,6 +98,20 @@ class _HomepageState extends State<Homepage> {
           ),
           TextButton.icon(
             onPressed: () async {
+              TimeOfDay? T1 = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              );
+              cW.changeTime(T1!);
+            },
+            label: Text(
+              "${cR.t1.hour}:${cR.t1.minute}",
+              style: const TextStyle(fontSize: 20),
+            ),
+            icon: const Icon(Icons.timer, size: 30),
+          ),
+          TextButton.icon(
+            onPressed: () async {
               DateTime? dT = await showDatePicker(
                 context: context,
                 firstDate: DateTime(1900),

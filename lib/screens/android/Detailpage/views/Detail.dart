@@ -41,15 +41,12 @@ class _DetailState extends State<Detail> {
         actions: [
           IconButton(
             onPressed: () {
-              // txtname.text = detail.name!;
-              // txtphone.text = detail.number!;
-              // txtemail.text = detail.email!;
+              txtname.text = detail.name!;
+              txtphone.text = detail.number!;
+              txtemail.text = detail.email!;
               showDialog(
                   context: context,
                   builder: (context) {
-                    detail.name = txtname.text;
-                    detail.number = txtphone.text;
-                    detail.email = txtemail.text;
                     return AlertDialog(
                       actions: [
                         10.height,
@@ -108,8 +105,9 @@ class _DetailState extends State<Detail> {
                               image: detail.image,
                             );
                             context
-                                .watch<ContactProvider>()
+                                .read<ContactProvider>()
                                 .updatecontact(contact);
+                            Navigator.pop(context);
                           },
                           child: const Text('update'),
                         ),

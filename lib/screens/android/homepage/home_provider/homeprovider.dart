@@ -11,12 +11,19 @@ class ContactProvider with ChangeNotifier {
   List<ContactModel> favoriteContact = [];
   List<ContactModel> contactList = [
     ContactModel(
-        name: 'Himansh',
+        name: 'Himanshu',
         number: '1234567890',
         image: 'lib/images/1.jpg',
         email: 'himanshu@123'),
   ];
   DateTime date = DateTime.now();
+  TimeOfDay t1 = TimeOfDay.now();
+
+  void changeTime(TimeOfDay T1) {
+    t1 = T1;
+    notifyListeners();
+  }
+
   void changeDatetime(DateTime datetime) {
     date = datetime;
     notifyListeners();
