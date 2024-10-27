@@ -95,7 +95,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 100.0),
+        padding: const EdgeInsets.only(top: 60.0),
         child: ListView(
           children: [
             (detail.image == null)
@@ -186,14 +186,89 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
               title: Text('${detail.number}'),
               leading: const Icon(Icons.sms_outlined),
             ),
-            225.height,
+            10.height,
+            CupertinoActionSheet(
+              actions: [
+                CupertinoButton(
+                  child: Row(
+                    children: [
+                      const Icon(Icons.calendar_month),
+                      3.width,
+                      const Text('Date'),
+                      const Spacer(),
+                      Text(
+                          "${context.watch<ContactProvider>().date.day}/${context.watch<ContactProvider>().date.month}/${context.watch<ContactProvider>().date.year}"),
+                    ],
+                  ),
+                  onPressed: () {
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          height: 300,
+                          color: Colors.white,
+                          child: CupertinoDatePicker(
+                              mode: CupertinoDatePickerMode.date,
+                              onDateTimeChanged: (value) {
+                                context
+                                    .read<ContactProvider>()
+                                    .changeDatetime(value);
+                              },
+                              initialDateTime: DateTime.now(),
+                              minimumYear: 1900,
+                              maximumYear: 3000),
+                        );
+                      },
+                    );
+                  },
+                ),
+                Row(
+                  children: [
+                    CupertinoButton(
+                      child: Row(
+                        children: [
+                          Icon(CupertinoIcons.time),
+                          const Text('Time'),
+                          const Text(
+                              "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
+                          Text(
+                              "${context.watch<ContactProvider>().t1.hour}:${context.watch<ContactProvider>().t1.minute}"),
+                        ],
+                      ),
+                      onPressed: () {
+                        showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) {
+                            return Container(
+                              height: 300,
+                              color: Colors.white,
+                              child: CupertinoDatePicker(
+                                  mode: CupertinoDatePickerMode.time,
+                                  initialDateTime: DateTime.now(),
+                                  onDateTimeChanged: (value) {
+                                    context.read<ContactProvider>().changeTime(
+                                        TimeOfDay(
+                                            hour: value.hour,
+                                            minute: value.minute));
+                                  }),
+                            );
+                          },
+                        );
+                      },
+                    ),
+                  ],
+                )
+              ],
+            ),
+            150.height,
             Row(
               children: [
                 CupertinoButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/favorites');
+                    context.read<ContactProvider>().Favoritecontact(detail);
+                    Navigator.pop(context);
                   },
-                  child: Icon(CupertinoIcons.star),
+                  child: const Icon(CupertinoIcons.star),
                 ),
                 60.width,
                 CupertinoButton(
@@ -201,21 +276,21 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                     Share.share(
                         'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
                   },
-                  child: Icon(CupertinoIcons.share_up),
+                  child: const Icon(CupertinoIcons.share_up),
                 ),
                 60.width,
                 CupertinoButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/');
                   },
-                  child: Icon(Icons.access_time_outlined),
+                  child: const Icon(Icons.access_time_outlined),
                 ),
                 60.width,
                 CupertinoButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/hide');
                   },
-                  child: Icon(CupertinoIcons.bookmark),
+                  child: const Icon(CupertinoIcons.bookmark),
                 )
               ],
             ),

@@ -96,65 +96,39 @@ class _HomepageState extends State<Homepage> {
               },
             ),
           ),
-          TextButton.icon(
-            onPressed: () async {
-              TimeOfDay? T1 = await showTimePicker(
-                context: context,
-                initialTime: TimeOfDay.now(),
-              );
-              cW.changeTime(T1!);
-            },
-            label: Text(
-              "${cR.t1.hour}:${cR.t1.minute}",
-              style: const TextStyle(fontSize: 20),
-            ),
-            icon: const Icon(Icons.timer, size: 30),
-          ),
-          TextButton.icon(
-            onPressed: () async {
-              DateTime? dT = await showDatePicker(
-                context: context,
-                firstDate: DateTime(1900),
-                lastDate: DateTime(3000),
-              );
-              cW.changeDatetime(dT!);
-            },
-            label: Text("${cR.date.day}/${cR.date.month}/${cR.date.year}"),
-            icon: const Icon(Icons.date_range),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return Container(
-                    height: 200,
-                    color: Colors.white,
-                    child: const Center(
-                      child: Text('dhruv'),
-                    ),
-                  );
-                },
-              );
-            },
-            child: const Text("Add Contact"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              scaffoldKey.currentState!.showBottomSheet(
-                (context) {
-                  return Container(
-                    height: 200,
-                    color: Colors.white,
-                    child: const Center(
-                      child: Text("Dhruv"),
-                    ),
-                  );
-                },
-              );
-            },
-            child: const Text("Add Contact"),
-          ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     showModalBottomSheet(
+          //       context: context,
+          //       builder: (context) {
+          //         return Container(
+          //           height: 200,
+          //           color: Colors.white,
+          //           child: const Center(
+          //             child: Text('dhruv'),
+          //           ),
+          //         );
+          //       },
+          //     );
+          //   },
+          //   child: const Text("Add Contact"),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     scaffoldKey.currentState!.showBottomSheet(
+          //       (context) {
+          //         return Container(
+          //           height: 200,
+          //           color: Colors.white,
+          //           child: const Center(
+          //             child: Text("Dhruv"),
+          //           ),
+          //         );
+          //       },
+          //     );
+          //   },
+          //   child: const Text("Add Contact"),
+          // ),
         ],
       ),
       floatingActionButton: FloatingActionButton(

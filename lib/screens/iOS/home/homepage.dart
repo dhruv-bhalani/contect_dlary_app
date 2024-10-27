@@ -17,7 +17,7 @@ class _iOSHomepageState extends State<iOSHomepage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text('Home'),
+        middle: const Text('Home'),
         trailing: CupertinoSwitch(
           value: context.watch<ContactProvider>().isAndiroid,
           onChanged: (value) {
@@ -41,12 +41,6 @@ class _iOSHomepageState extends State<iOSHomepage> {
                   arguments:
                       context.read<ContactProvider>().contactList[index]);
             },
-            trailing: CupertinoButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/favorites');
-              },
-              child: const Icon(CupertinoIcons.star_fill),
-            ),
             title: Text(
                 "${context.watch<ContactProvider>().contactList[index].name}"),
             subtitle: Text(

@@ -17,7 +17,7 @@ class Addcontactpage extends StatefulWidget {
 class _AddcontactpageState extends State<Addcontactpage> {
   int currentStep = 0;
   String? imagePath;
-
+  String? name, Nmber, Email;
   TextEditingController txtname = TextEditingController();
   TextEditingController txtphone = TextEditingController();
   TextEditingController txtemail = TextEditingController();
@@ -45,179 +45,165 @@ class _AddcontactpageState extends State<Addcontactpage> {
           ),
         ],
       ),
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: Theme(
-          data: ThemeData(
-            scaffoldBackgroundColor: Colors.green.shade600,
-            shadowColor: Colors.green.shade600,
-            // primaryColor: Colors.red,
-            cardColor: Colors.green.shade600,
-            hoverColor: Colors.green.shade600,
-            splashColor: Colors.green.shade600,
-            canvasColor: Colors.green.shade600,
-            disabledColor: Colors.green.shade600,
-            dividerColor: Colors.green.shade600,
-            highlightColor: Colors.green.shade600,
-            colorSchemeSeed: Colors.green.shade600,
-          ),
-          child: Stepper(
-            currentStep: currentStep,
-            connectorColor: WidgetStatePropertyAll(Colors.green.shade600),
-            onStepContinue: () {
-              if (currentStep < 4) {
-                setState(() {
-                  currentStep++;
-                });
-              }
-            },
-            onStepCancel: () {
-              if (currentStep > 0) {
-                setState(() {
-                  currentStep--;
-                });
-              }
-            },
-            steps: [
-              Step(
-                title: const Text('Step 1'),
-                content: Column(
-                  children: [
-                    (imagePath == null)
-                        ? const CircleAvatar(
-                            radius: 90,
-                          )
-                        : CircleAvatar(
-                            radius: 90,
-                            backgroundImage: FileImage(
-                              File(imagePath!),
-                            ),
-                          ),
-                    10.height,
-                    ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                          // barrierDismissible: false,
-                          context: context,
-                          builder: (context) => AlertDialog(
-                            title: const Text("Select Image Source"),
-                            content: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                ListTile(
-                                  leading: const Icon(Icons.camera),
-                                  title: const Text("Camera"),
-                                  onTap: () async {
-                                    ImagePicker imagePicker = ImagePicker();
-                                    XFile? xfile = await imagePicker.pickImage(
-                                        source: ImageSource.camera);
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              (imagePath == null)
+                  ? const CircleAvatar(
+                      radius: 90,
+                      backgroundImage: AssetImage(
+                        'lib/assets/image/8.jpg',
+                      ),
+                      backgroundColor: Colors.transparent,
+                    )
+                  : CircleAvatar(
+                      radius: 90,
+                      backgroundImage: FileImage(
+                        File(imagePath!),
+                      ),
+                    ),
+              10.height,
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    // barrierDismissible: false,
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text("Select Image Source"),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListTile(
+                            leading: const Icon(Icons.camera),
+                            title: const Text("Camera"),
+                            onTap: () async {
+                              ImagePicker imagePicker = ImagePicker();
+                              XFile? xfile = await imagePicker.pickImage(
+                                  source: ImageSource.camera);
 
-                                    imagePath = xfile!.path;
-                                    setState(() {});
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                                ListTile(
-                                  leading: const Icon(Icons.photo),
-                                  title: const Text("Gallery"),
-                                  onTap: () async {
-                                    ImagePicker imagePicker = ImagePicker();
-                                    XFile? xfile = await imagePicker.pickImage(
-                                        source: ImageSource.gallery);
-
-                                    imagePath = xfile!.path;
-                                    setState(() {});
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            ),
+                              imagePath = xfile!.path;
+                              setState(() {});
+                              Navigator.of(context).pop();
+                            },
                           ),
-                        );
-                      },
-                      child: const Text(
-                        'Select Image',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Step(
-                title: const Text('Step 2'),
-                content: TextField(
-                  controller: txtname,
-                  keyboardType: TextInputType.text,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
-                      ),
-                    ),
-                    labelText: 'name',
-                  ),
-                ),
-              ),
-              Step(
-                title: const Text('Step 3'),
-                content: TextField(
-                  controller: txtemail,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
-                      ),
-                    ),
-                    labelText: 'Email',
-                  ),
-                ),
-              ),
-              Step(
-                title: const Text('Step 4'),
-                content: TextField(
-                  controller: txtphone,
-                  keyboardType: TextInputType.phone,
-                  maxLength: 10,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(30),
-                      ),
-                    ),
-                    labelText: 'Phone',
-                  ),
-                ),
-              ),
-              Step(
-                title: const Text('Step 5'),
-                content: ElevatedButton(
-                  onPressed: () {
-                    String name = txtname.text;
-                    String email = txtemail.text;
-                    String phone = txtphone.text;
+                          ListTile(
+                            leading: const Icon(Icons.photo),
+                            title: const Text("Gallery"),
+                            onTap: () async {
+                              ImagePicker imagePicker = ImagePicker();
+                              XFile? xfile = await imagePicker.pickImage(
+                                  source: ImageSource.gallery);
 
-                    ContactModel contact = ContactModel(
-                      name: name,
-                      number: phone,
-                      email: email,
-                      image: imagePath,
-                    );
-                    context.read<ContactProvider>().addcontact(contact);
-                    Navigator.of(context).pop();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("Added Successfully"),
-                        shape: StadiumBorder(
-                          side: BorderSide(
-                            color: Colors.white,
-                            style: BorderStyle.none,
+                              imagePath = xfile!.path;
+                              setState(() {});
+                              Navigator.of(context).pop();
+                            },
                           ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                child: const Icon(Icons.add_a_photo),
+              ),
+              50.height,
+              TextFormField(
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Please enter name !!";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: txtname,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.text,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                  ),
+                  labelText: 'name',
+                  prefixIcon: Icon(Icons.person),
+                ),
+              ),
+              20.height,
+              TextFormField(
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Please enter phone !!";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: txtphone,
+                textInputAction: TextInputAction.next,
+                keyboardType: TextInputType.phone,
+                maxLength: 10,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                  ),
+                  labelText: 'Phone',
+                  prefixIcon: Icon(Icons.phone),
+                ),
+              ),
+              10.height,
+              TextFormField(
+                validator: (val) {
+                  if (val!.isEmpty) {
+                    return "Please enter email !!";
+                  } else {
+                    return null;
+                  }
+                },
+                controller: txtemail,
+                textInputAction: TextInputAction.done,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(30),
+                    ),
+                  ),
+                  labelText: 'Email',
+                  prefixIcon: Icon(Icons.email),
+                ),
+              ),
+              40.height,
+              ElevatedButton(
+                onPressed: () {
+                  String name = txtname.text;
+                  String email = txtemail.text;
+                  String phone = txtphone.text;
+                  File image = File(imagePath!);
+
+                  ContactModel contact = ContactModel(
+                    name: name,
+                    number: phone,
+                    email: email,
+                    image: imagePath,
+                  );
+                  context.read<ContactProvider>().addcontact(contact);
+                  Navigator.of(context).pop();
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Added Successfully"),
+                      shape: StadiumBorder(
+                        side: BorderSide(
+                          color: Colors.white,
+                          style: BorderStyle.none,
                         ),
                       ),
-                    );
-                  },
-                  child: const Text('save'),
-                ),
+                    ),
+                  );
+                },
+                child: const Text('save'),
               ),
             ],
           ),

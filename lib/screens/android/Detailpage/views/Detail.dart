@@ -21,8 +21,13 @@ class _DetailState extends State<Detail> {
   TextEditingController txtname = TextEditingController();
   TextEditingController txtphone = TextEditingController();
   TextEditingController txtemail = TextEditingController();
+
+  late ContactProvider cW = ContactProvider();
+  late ContactProvider cR = ContactProvider();
   @override
   Widget build(BuildContext context) {
+    cR = context.read<ContactProvider>();
+    cW = context.watch<ContactProvider>();
     ContactModel detail =
         ModalRoute.of(context)!.settings.arguments as ContactModel;
     context.watch<ContactProvider>().imagePath = detail.image;
@@ -246,8 +251,48 @@ class _DetailState extends State<Detail> {
                 Icons.message,
               ),
             ),
-            120.height,
-            const Spacer(),
+            TextButton.icon(
+              onPressed: () async {
+                TimeOfDay? T1 = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                );
+                cW.changeTime(T1!);
+              },
+              label: Row(
+                children: [
+                  Text(
+                    "Time",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Text("${cR.t1.hour}:${cR.t1.minute}")
+                ],
+              ),
+              icon: const Icon(Icons.timer, size: 25),
+            ),
+            TextButton.icon(
+              onPressed: () async {
+                DateTime? dT = await showDatePicker(
+                  context: context,
+                  firstDate: DateTime(1900),
+                  lastDate: DateTime(3000),
+                );
+                cW.changeDatetime(dT!);
+              },
+              label: Row(
+                children: [
+                  Text(
+                    "Date",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Text("${cR.date.day}/${cR.date.month}/${cR.date.year}")
+                ],
+              ),
+              icon: const Icon(Icons.date_range),
+            ),
+            20.height,
             Container(
               height: 50,
               width: double.infinity,

@@ -1,13 +1,11 @@
 import 'dart:io';
-
-import 'package:contect_dlary_app/routes/routes.dart';
-import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
-import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
-import 'package:contect_dlary_app/screens/iOS/home/homepage.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:contect_dlary_app/routes/routes.dart';
+import 'package:contect_dlary_app/screens/iOS/home/homepage.dart';
+import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
+import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,8 +49,7 @@ class MyApp extends StatelessWidget {
                     ),
                     textButtonTheme: TextButtonThemeData(
                       style: TextButton.styleFrom(
-                        foregroundColor: Colors.green.shade600,
-                      ),
+                          foregroundColor: Colors.black.withAlpha(200)),
                     ),
                   ),
                   // darkTheme: ThemeData.dark().copyWith(
@@ -84,7 +81,7 @@ class MyApp extends StatelessWidget {
                 )
               : CupertinoApp(
                   debugShowCheckedModeBanner: false,
-                  theme: CupertinoThemeData(
+                  theme: const CupertinoThemeData(
                     brightness: Brightness.light,
                   ),
                   routes: AppRoutesiOS.allRoutes,
