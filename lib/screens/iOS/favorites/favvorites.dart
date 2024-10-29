@@ -18,50 +18,82 @@ class _iOSFavvoritesState extends State<iOSFavvorites> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('Favorites'),
-        trailing: CupertinoSwitch(
-          value: context.watch<ContactProvider>().isAndiroid,
-          onChanged: (value) {
-            context.read<ContactProvider>().changeisAndiroid();
-          },
-        ),
-        leading: CupertinoButton(
-          child: const Icon(CupertinoIcons.add),
-          onPressed: () {
-            Navigator.pushNamed(context, '/countars');
-          },
-        ),
       ),
-      child: ListView.builder(
-        itemCount: context.watch<ContactProvider>().contactList.length,
-        itemBuilder: (context, index) {
-          return CupertinoListTile(
-            onTap: () {
-              context.read<ContactProvider>().setSelectedIndex(index);
-              Navigator.of(context).pushNamed('/iOSDetail',
-                  arguments:
-                      context.read<ContactProvider>().contactList[index]);
-            },
-            trailing: CupertinoButton(
-              onPressed: () {
-                context.read<ContactProvider>().deletecontact(index);
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount:
+                  context.watch<ContactProvider>().favoriteContact.length,
+              itemBuilder: (context, index) {
+                return CupertinoListTile(
+                  onTap: () {
+                    context.read<ContactProvider>().setSelectedIndex(index);
+                    Navigator.of(context).pushNamed('/iOSDetail',
+                        arguments: context
+                            .read<ContactProvider>()
+                            .favoriteContact[index]);
+                  },
+                  trailing: CupertinoButton(
+                    onPressed: () {
+                      showCupertinoDialog(
+                        context: context,
+                        builder: (context) {
+                          return CupertinoAlertDialog(
+                            actions: [
+                              CupertinoButton(
+                                child: Icon(Icons.delete),
+                                onPressed: () {
+                                  context
+                                      .read<ContactProvider>()
+                                      .favoritedeletecontact(index);
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              CupertinoButton(
+                                child: Icon(Icons.home),
+                                onPressed: () {
+                                  context
+                                      .read<ContactProvider>()
+                                      .unfavoritecontact(context
+                                          .read<ContactProvider>()
+                                          .favoriteContact[index]);
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: Icon(CupertinoIcons.clear),
+                  ),
+                  title: Text(
+                      "${context.watch<ContactProvider>().favoriteContact[index].name}"),
+                  subtitle: Text(
+                    "${context.watch<ContactProvider>().favoriteContact[index].number}",
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                  leading: CircleAvatar(
+                    radius: 20,
+                    foregroundImage: FileImage(
+                      File(context
+                          .watch<ContactProvider>()
+                          .favoriteContact[index]
+                          .image!),
+                    ),
+                  ),
+                );
               },
-              child: const Icon(CupertinoIcons.delete),
             ),
-            title: Text(
-                "${context.watch<ContactProvider>().contactList[index].name}"),
-            subtitle: Text(
-              "${context.watch<ContactProvider>().contactList[index].number}",
-              style: const TextStyle(fontSize: 15),
-            ),
-            leading: CircleAvatar(
-              radius: 20,
-              foregroundImage: FileImage(
-                File(
-                    context.watch<ContactProvider>().contactList[index].image!),
-              ),
-            ),
-          );
-        },
+          ),
+          CupertinoButton(
+            child: const Icon(CupertinoIcons.add),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/iOSAddContact');
+            },
+          ),
+        ],
       ),
     );
   }

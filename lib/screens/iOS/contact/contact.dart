@@ -30,7 +30,7 @@ class _iOSContactState extends State<iOSContact> {
       ),
       child: Padding(
         padding: const EdgeInsets.only(
-          top: 100,
+          top: 30,
         ),
         child: Center(
           child: ListView(

@@ -33,18 +33,18 @@ class MyApp extends StatelessWidget {
                   theme: ThemeData(
                     scaffoldBackgroundColor: Colors.white,
                     appBarTheme: AppBarTheme(
-                      backgroundColor: Colors.green.shade600,
+                      backgroundColor: Colors.blue.shade600,
                     ),
                     textTheme: const TextTheme(),
                     floatingActionButtonTheme: FloatingActionButtonThemeData(
-                      backgroundColor: Colors.green.shade600,
+                      backgroundColor: Colors.blue.shade600,
                     ),
                     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                      selectedItemColor: Colors.green.shade600,
+                      selectedItemColor: Colors.blue.shade600,
                     ),
                     elevatedButtonTheme: ElevatedButtonThemeData(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green.shade600,
+                        backgroundColor: Colors.blue.shade600,
                       ),
                     ),
                     textButtonTheme: TextButtonThemeData(
@@ -81,9 +81,9 @@ class MyApp extends StatelessWidget {
                 )
               : CupertinoApp(
                   debugShowCheckedModeBanner: false,
-                  theme: const CupertinoThemeData(
-                    brightness: Brightness.light,
-                  ),
+                  theme: context.watch<ContactProvider>().isdarkmode
+                      ? CupertinoThemeData(brightness: Brightness.dark)
+                      : CupertinoThemeData(brightness: Brightness.light),
                   routes: AppRoutesiOS.allRoutes,
                 );
         },

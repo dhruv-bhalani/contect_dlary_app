@@ -73,6 +73,7 @@ class _HomepageState extends State<Homepage> {
                           value: context.watch<ContactProvider>().isdarkmode,
                           onChanged: (value) {
                             context.read<ContactProvider>().changeisDarkMode();
+                            Navigator.pop(context);
                           },
                         ),
                       ],

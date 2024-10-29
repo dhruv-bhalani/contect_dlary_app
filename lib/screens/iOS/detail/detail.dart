@@ -95,7 +95,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.only(top: 60.0),
+        padding: const EdgeInsets.only(top: 30.0),
         child: ListView(
           children: [
             (detail.image == null)
@@ -188,7 +188,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
               title: Text('${detail.number}'),
               leading: const Icon(Icons.sms_outlined),
             ),
-            10.height,
+            40.height,
             CupertinoActionSheet(
               actions: [
                 CupertinoButton(
@@ -266,36 +266,27 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
             ),
             110.height,
             Row(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 CupertinoButton(
                   onPressed: () {
                     context.read<ContactProvider>().Favoritecontact(detail);
                     Navigator.pop(context);
                   },
-                  child: const Icon(CupertinoIcons.star),
+                  child: const Icon(
+                    CupertinoIcons.star,
+                  ),
                 ),
-                60.width,
+                Spacer(),
                 CupertinoButton(
                   onPressed: () {
                     Share.share(
                         'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
                   },
-                  child: const Icon(CupertinoIcons.share_up),
+                  child: const Icon(
+                    CupertinoIcons.share_up,
+                  ),
                 ),
-                60.width,
-                CupertinoButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                  child: const Icon(Icons.access_time_outlined),
-                ),
-                60.width,
-                CupertinoButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/hide');
-                  },
-                  child: const Icon(CupertinoIcons.bookmark),
-                )
               ],
             ),
           ],
