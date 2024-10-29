@@ -53,11 +53,35 @@ class _HomepageState extends State<Homepage> {
             },
             icon: const Icon(Icons.star),
           ),
-          Switch(
-            value: context.watch<ContactProvider>().isAndiroid,
-            onChanged: (value) {
-              context.read<ContactProvider>().changeisAndiroid();
+          IconButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("Select Theme"),
+                    content: Row(
+                      children: [
+                        Switch(
+                          value: context.watch<ContactProvider>().isAndiroid,
+                          onChanged: (value) {
+                            context.read<ContactProvider>().changeisAndiroid();
+                          },
+                        ),
+                        Spacer(),
+                        Switch(
+                          value: context.watch<ContactProvider>().isdarkmode,
+                          onChanged: (value) {
+                            context.read<ContactProvider>().changeisDarkMode();
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
             },
+            icon: Icon(Icons.dark_mode),
           ),
         ],
       ),
@@ -131,6 +155,7 @@ class _HomepageState extends State<Homepage> {
           // ),
         ],
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed('/addcontact');

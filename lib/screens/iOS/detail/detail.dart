@@ -102,6 +102,8 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                 ? const Center(
                     child: CircleAvatar(
                       radius: 80,
+                      backgroundImage: NetworkImage(
+                          'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'),
                     ),
                   )
                 : Center(
@@ -222,6 +224,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                     );
                   },
                 ),
+                10.height,
                 Row(
                   children: [
                     CupertinoButton(
@@ -229,6 +232,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                         children: [
                           Icon(CupertinoIcons.time),
                           const Text('Time'),
+                          // Spacer(),
                           const Text(
                               "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
                           Text(
@@ -260,7 +264,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                 )
               ],
             ),
-            150.height,
+            110.height,
             Row(
               children: [
                 CupertinoButton(

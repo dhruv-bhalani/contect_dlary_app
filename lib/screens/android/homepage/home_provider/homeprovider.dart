@@ -5,6 +5,7 @@ import 'package:local_auth/local_auth.dart';
 
 class ContactProvider with ChangeNotifier {
   bool isAndiroid = true;
+  bool isdarkmode = true;
   int SelectedIndex = 0;
   String? imagePath;
   List<ContactModel> privateContact = [];
@@ -102,6 +103,11 @@ class ContactProvider with ChangeNotifier {
 
   void changeisAndiroid() {
     isAndiroid = !isAndiroid;
+    notifyListeners();
+  }
+
+  void changeisDarkMode() {
+    isdarkmode = !isdarkmode;
     notifyListeners();
   }
 }

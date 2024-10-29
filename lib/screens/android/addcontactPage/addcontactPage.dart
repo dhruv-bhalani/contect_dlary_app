@@ -17,7 +17,7 @@ class Addcontactpage extends StatefulWidget {
 class _AddcontactpageState extends State<Addcontactpage> {
   int currentStep = 0;
   String? imagePath;
-  String? name, Nmber, Email;
+
   TextEditingController txtname = TextEditingController();
   TextEditingController txtphone = TextEditingController();
   TextEditingController txtemail = TextEditingController();
@@ -34,16 +34,16 @@ class _AddcontactpageState extends State<Addcontactpage> {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed('/countar');
-            },
-            icon: const Icon(
-              Icons.arrow_forward_ios,
-            ),
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.of(context).pushNamed('/countar');
+        //     },
+        //     icon: const Icon(
+        //       Icons.arrow_forward_ios,
+        //     ),
+        //   ),
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,10 +53,6 @@ class _AddcontactpageState extends State<Addcontactpage> {
               (imagePath == null)
                   ? const CircleAvatar(
                       radius: 90,
-                      backgroundImage: AssetImage(
-                        'lib/assets/image/8.jpg',
-                      ),
-                      backgroundColor: Colors.transparent,
                     )
                   : CircleAvatar(
                       radius: 90,
@@ -110,13 +106,6 @@ class _AddcontactpageState extends State<Addcontactpage> {
               ),
               50.height,
               TextFormField(
-                validator: (val) {
-                  if (val!.isEmpty) {
-                    return "Please enter name !!";
-                  } else {
-                    return null;
-                  }
-                },
                 controller: txtname,
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.text,
@@ -132,13 +121,6 @@ class _AddcontactpageState extends State<Addcontactpage> {
               ),
               20.height,
               TextFormField(
-                validator: (val) {
-                  if (val!.isEmpty) {
-                    return "Please enter phone !!";
-                  } else {
-                    return null;
-                  }
-                },
                 controller: txtphone,
                 textInputAction: TextInputAction.next,
                 keyboardType: TextInputType.phone,
@@ -155,13 +137,6 @@ class _AddcontactpageState extends State<Addcontactpage> {
               ),
               10.height,
               TextFormField(
-                validator: (val) {
-                  if (val!.isEmpty) {
-                    return "Please enter email !!";
-                  } else {
-                    return null;
-                  }
-                },
                 controller: txtemail,
                 textInputAction: TextInputAction.done,
                 keyboardType: TextInputType.emailAddress,

@@ -18,11 +18,34 @@ class _iOSHomepageState extends State<iOSHomepage> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: const Text('Home'),
-        trailing: CupertinoSwitch(
-          value: context.watch<ContactProvider>().isAndiroid,
-          onChanged: (value) {
-            context.read<ContactProvider>().changeisAndiroid();
+        trailing: CupertinoButton(
+          onPressed: () {
+            showCupertinoDialog(
+              context: context,
+              builder: (context) {
+                return CupertinoAlertDialog(
+                  actions: [
+                    Container(
+                      height: 100,
+                      child: CupertinoSwitch(
+                        value: context.watch<ContactProvider>().isAndiroid,
+                        onChanged: (value) {
+                          context.read<ContactProvider>().changeisAndiroid();
+                        },
+                      ),
+                    ),
+                    CupertinoSwitch(
+                      value: context.watch<ContactProvider>().isdarkmode,
+                      onChanged: (value) {
+                        context.read<ContactProvider>().changeisDarkMode();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
           },
+          child: Icon(Icons.dark_mode),
         ),
         leading: CupertinoButton(
           child: const Icon(CupertinoIcons.add),

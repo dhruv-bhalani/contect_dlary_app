@@ -251,26 +251,19 @@ class _DetailState extends State<Detail> {
                 Icons.message,
               ),
             ),
-            TextButton.icon(
-              onPressed: () async {
-                TimeOfDay? T1 = await showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay.now(),
-                );
-                cW.changeTime(T1!);
-              },
-              label: Row(
-                children: [
-                  Text(
-                    "Time",
-                    style: const TextStyle(fontSize: 20),
-                  ),
-                  Spacer(),
-                  Text("${cR.t1.hour}:${cR.t1.minute}")
-                ],
-              ),
-              icon: const Icon(Icons.timer, size: 25),
-            ),
+            // ListTile(
+            //   title: const Text("Dark Mode"),
+            //   trailing: Consumer<ContactProvider>(
+            //     builder: (BuildContext context, ContactProvider value,
+            //             Widget? child) =>
+            //         Switch(
+            //       value: context.watch<ContactProvider>().isdarkmode,
+            //       onChanged: (val) {
+            //         context.read<ContactProvider>().changeisDarkMode();
+            //       },
+            //     ),
+            //   ),
+            // ),
             TextButton.icon(
               onPressed: () async {
                 DateTime? dT = await showDatePicker(
@@ -282,15 +275,35 @@ class _DetailState extends State<Detail> {
               },
               label: Row(
                 children: [
-                  Text(
+                  const Text(
                     "Date",
-                    style: const TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20),
                   ),
                   Spacer(),
                   Text("${cR.date.day}/${cR.date.month}/${cR.date.year}")
                 ],
               ),
               icon: const Icon(Icons.date_range),
+            ),
+            TextButton.icon(
+              onPressed: () async {
+                TimeOfDay? T1 = await showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay.now(),
+                );
+                cW.changeTime(T1!);
+              },
+              label: Row(
+                children: [
+                  const Text(
+                    "Time",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  Spacer(),
+                  Text("${cR.t1.hour}:${cR.t1.minute}")
+                ],
+              ),
+              icon: const Icon(Icons.timer, size: 25),
             ),
             20.height,
             Container(

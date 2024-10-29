@@ -52,29 +52,29 @@ class MyApp extends StatelessWidget {
                           foregroundColor: Colors.black.withAlpha(200)),
                     ),
                   ),
-                  // darkTheme: ThemeData.dark().copyWith(
-                  //   // scaffoldBackgroundColor: Colors.blue,
-                  //   appBarTheme: const AppBarTheme(
-                  //     backgroundColor: Colors.red,
-                  //   ),
-                  //   textTheme: const TextTheme(
-                  //     bodyMedium: TextStyle(
-                  //         color: Colors.white,
-                  //         fontSize: 40,
-                  //         fontWeight: FontWeight.bold,
-                  //         // fontStyle: FontStyle.italic,
-                  //         fontFamily: 'poppins'),
-                  //   ),
-                  //   floatingActionButtonTheme:
-                  //       const FloatingActionButtonThemeData(
-                  //     backgroundColor: Colors.red,
-                  //   ),
-                  //   elevatedButtonTheme: ElevatedButtonThemeData(
-                  //     style:
-                  //         ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                  //   ),
-                  // ),
-                  themeMode: ThemeData.dark().brightness == Brightness.dark
+                  darkTheme: ThemeData.dark().copyWith(
+                    // scaffoldBackgroundColor: Colors.blue,
+                    appBarTheme: const AppBarTheme(
+                      backgroundColor: Colors.blue,
+                    ),
+                    textTheme: const TextTheme(
+                      bodyMedium: TextStyle(
+                          color: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          // fontStyle: FontStyle.italic,
+                          fontFamily: 'poppins'),
+                    ),
+                    floatingActionButtonTheme:
+                        const FloatingActionButtonThemeData(
+                      backgroundColor: Colors.blue,
+                    ),
+                    elevatedButtonTheme: ElevatedButtonThemeData(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue),
+                    ),
+                  ),
+                  themeMode: context.watch<ContactProvider>().isdarkmode
                       ? ThemeMode.dark
                       : ThemeMode.light,
                   routes: AppRoutes.allRoutes,

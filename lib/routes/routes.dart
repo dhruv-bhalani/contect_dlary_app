@@ -16,9 +16,9 @@ import 'package:flutter/material.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> allRoutes = {
-    // '/': (context) => const Splashscreen(),
+    '/': (context) => const Splashscreen(),
     '/intro': (context) => const Introduction(),
-    '/': (context) => const Homepage(),
+    '/home': (context) => const Homepage(),
     '/addcontact': (context) => const Addcontactpage(),
     '/countar': (context) => const Countar(),
     '/Detail': (context) => const Detail(),
