@@ -30,7 +30,7 @@ class AppRoutes {
 
 class AppRoutesiOS {
   static Map<String, WidgetBuilder> allRoutes = {
-    '/home': (context) => const iOSHomepage(),
+    '/iOShome': (context) => const iOSHomepage(),
     '/iOSDetail': (context) => const iOSDetailPage(),
     '/favorites': (context) => const iOSFavvorites(),
     '/hide': (context) => const iOSHide(),

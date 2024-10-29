@@ -127,18 +127,11 @@ class _iOSContactState extends State<iOSContact> {
                     image: imagePath,
                   );
                   context.read<ContactProvider>().addcontact(contact);
-                  Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Added Successfully"),
-                      shape: StadiumBorder(
-                        side: BorderSide(
-                          color: Colors.white,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                    ),
-                  );
+                  txtname.clear();
+                  txtphone.clear();
+                  txtemail.clear();
+                  imagePath = null;
+                  Navigator.pushNamed(context, '/iOShome');
                 },
                 child: const Text(
                   'Save',

@@ -205,6 +205,7 @@ class _DetailState extends State<Detail> {
               title: Text("${detail.name}"),
               leading: const Icon(
                 Icons.person,
+                color: Colors.blue,
               ),
             ),
             10.height,
@@ -220,6 +221,7 @@ class _DetailState extends State<Detail> {
               title: Text("${detail.number}"),
               leading: const Icon(
                 Icons.phone,
+                color: Colors.blue,
               ),
             ),
             10.height,
@@ -235,6 +237,7 @@ class _DetailState extends State<Detail> {
               title: Text("${detail.email}"),
               leading: const Icon(
                 Icons.email,
+                color: Colors.blue,
               ),
             ),
             const Text(
@@ -249,6 +252,7 @@ class _DetailState extends State<Detail> {
               title: Text("${detail.number}"),
               leading: const Icon(
                 Icons.message,
+                color: Colors.blue,
               ),
             ),
             // ListTile(
@@ -277,13 +281,19 @@ class _DetailState extends State<Detail> {
                 children: [
                   const Text(
                     "Date",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, color: Colors.blue),
                   ),
                   Spacer(),
-                  Text("${cR.date.day}/${cR.date.month}/${cR.date.year}")
+                  Text(
+                    "${cR.date.day}/${cR.date.month}/${cR.date.year}",
+                    style: TextStyle(color: Colors.blue.shade600),
+                  )
                 ],
               ),
-              icon: const Icon(Icons.date_range),
+              icon: const Icon(
+                Icons.date_range,
+                color: Colors.blue,
+              ),
             ),
             TextButton.icon(
               onPressed: () async {
@@ -297,20 +307,27 @@ class _DetailState extends State<Detail> {
                 children: [
                   const Text(
                     "Time",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, color: Colors.blue),
                   ),
                   Spacer(),
-                  Text("${cR.t1.hour}:${cR.t1.minute}")
+                  Text(
+                    "${cR.t1.hour}:${cR.t1.minute}",
+                    style: TextStyle(color: Colors.blue.shade600),
+                  )
                 ],
               ),
-              icon: const Icon(Icons.timer, size: 25),
+              icon: const Icon(
+                Icons.timer,
+                size: 25,
+                color: Colors.blue,
+              ),
             ),
             20.height,
             Container(
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.green.shade600,
+                color: Colors.blue.shade600,
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Row(

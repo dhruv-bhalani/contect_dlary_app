@@ -17,6 +17,12 @@ class _iOSHomepageState extends State<iOSHomepage> {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        leading: CupertinoButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed('/countars');
+          },
+          child: Icon(Icons.add),
+        ),
         middle: const Text('Home'),
         trailing: CupertinoButton(
           onPressed: () {
@@ -46,37 +52,45 @@ class _iOSHomepageState extends State<iOSHomepage> {
           child: Icon(Icons.dark_mode),
         ),
       ),
-      child: ListView.builder(
-        itemCount: context.watch<ContactProvider>().contactList.length,
-        itemBuilder: (context, index) {
-          return CupertinoListTile(
-            onTap: () {
-              context.read<ContactProvider>().setSelectedIndex(index);
-              Navigator.of(context).pushNamed('/iOSDetail',
-                  arguments:
-                      context.read<ContactProvider>().contactList[index]);
-            },
-            trailing: CupertinoButton(
-              onPressed: () {
-                context.read<ContactProvider>().deletecontact(index);
+      child: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: context.watch<ContactProvider>().contactList.length,
+              itemBuilder: (context, index) {
+                return CupertinoListTile(
+                  onTap: () {
+                    context.read<ContactProvider>().setSelectedIndex(index);
+                    Navigator.of(context).pushNamed('/iOSDetail',
+                        arguments:
+                            context.read<ContactProvider>().contactList[index]);
+                  },
+                  trailing: CupertinoButton(
+                    onPressed: () {
+                      context.read<ContactProvider>().deletecontact(index);
+                    },
+                    child: Icon(CupertinoIcons.delete),
+                  ),
+                  title: Text(
+                      "${context.watch<ContactProvider>().contactList[index].name}"),
+                  subtitle: Text(
+                    "${context.watch<ContactProvider>().contactList[index].number}",
+                    style: const TextStyle(fontSize: 15),
+                  ),
+                  leading: CircleAvatar(
+                    radius: 20,
+                    foregroundImage: FileImage(
+                      File(context
+                          .watch<ContactProvider>()
+                          .contactList[index]
+                          .image!),
+                    ),
+                  ),
+                );
               },
-              child: Icon(CupertinoIcons.delete),
             ),
-            title: Text(
-                "${context.watch<ContactProvider>().contactList[index].name}"),
-            subtitle: Text(
-              "${context.watch<ContactProvider>().contactList[index].number}",
-              style: const TextStyle(fontSize: 15),
-            ),
-            leading: CircleAvatar(
-              radius: 20,
-              foregroundImage: FileImage(
-                File(
-                    context.watch<ContactProvider>().contactList[index].image!),
-              ),
-            ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
