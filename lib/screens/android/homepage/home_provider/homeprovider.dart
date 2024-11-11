@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
 
 class ContactProvider with ChangeNotifier {
-  bool isAndiroid = true;
-  bool isdarkmode = true;
+  bool isAndiroid = false;
+  bool isdarkmode = false;
   int SelectedIndex = 0;
   String? imagePath;
   List<ContactModel> privateContact = [];

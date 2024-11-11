@@ -31,6 +31,9 @@ class _iOSContactState extends State<iOSContact> {
       child: Padding(
         padding: const EdgeInsets.only(
           top: 30,
+          right: 16,
+          bottom: 16,
+          left: 16,
         ),
         child: Center(
           child: ListView(
@@ -127,11 +130,11 @@ class _iOSContactState extends State<iOSContact> {
                     image: imagePath,
                   );
                   context.read<ContactProvider>().addcontact(contact);
+                  Navigator.pop(context);
                   txtname.clear();
                   txtphone.clear();
                   txtemail.clear();
                   imagePath = null;
-                  Navigator.pushNamed(context, '/iOShome');
                 },
                 child: const Text(
                   'Save',

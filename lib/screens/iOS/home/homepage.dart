@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
+import 'package:contect_dlary_app/utils/extension.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,12 @@ class _iOSHomepageState extends State<iOSHomepage> {
           child: Icon(Icons.add),
         ),
         middle: const Text('Home'),
+        // trailing: CupertinoButton(
+        //   onPressed: () {
+        //     Navigator.pushNamed(context, '/favorites');
+        //   },
+        //   child: Icon(Icons.star),
+        // ),
         trailing: CupertinoButton(
           onPressed: () {
             showCupertinoDialog(
@@ -31,18 +38,32 @@ class _iOSHomepageState extends State<iOSHomepage> {
               builder: (context) {
                 return CupertinoAlertDialog(
                   actions: [
+                    const Center(child: Text('Plat form')),
                     CupertinoSwitch(
                       value: context.watch<ContactProvider>().isAndiroid,
                       onChanged: (value) {
                         context.read<ContactProvider>().changeisAndiroid();
                       },
                     ),
+                    10.height,
+                    const Center(child: Text('Theme')),
                     CupertinoSwitch(
                       value: context.watch<ContactProvider>().isdarkmode,
                       onChanged: (value) {
                         context.read<ContactProvider>().changeisDarkMode();
                         Navigator.pop(context);
                       },
+                    ),
+                    10.height,
+                    const Center(child: Text("Favorites")),
+                    CupertinoButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/favorites');
+                      },
+                      child: const Icon(
+                        Icons.star,
+                        size: 40,
+                      ),
                     ),
                   ],
                 );

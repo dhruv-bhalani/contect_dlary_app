@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

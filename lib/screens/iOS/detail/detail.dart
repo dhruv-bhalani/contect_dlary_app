@@ -234,7 +234,7 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                           const Text('Time'),
                           // Spacer(),
                           const Text(
-                              "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
+                              "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
                           Text(
                               "${context.watch<ContactProvider>().t1.hour}:${context.watch<ContactProvider>().t1.minute}"),
                         ],
