@@ -54,17 +54,6 @@ class _iOSHomepageState extends State<iOSHomepage> {
                         Navigator.pop(context);
                       },
                     ),
-                    10.height,
-                    const Center(child: Text("Favorites")),
-                    CupertinoButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/favorites');
-                      },
-                      child: const Icon(
-                        Icons.star,
-                        size: 40,
-                      ),
-                    ),
                   ],
                 );
               },

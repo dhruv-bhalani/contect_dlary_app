@@ -22,36 +22,36 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text('Home'),
         actions: [
-          IconButton(
-            onPressed: () async {
-              bool islock = await context.read<ContactProvider>().LockContact();
-              if (islock) {
-                Navigator.pushNamed(context, '/hide');
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Contact Locked'),
-                  ),
-                );
-              }
-            },
-            icon: const Icon(Icons.lock),
-          ),
-          IconButton(
-            onPressed: () async {
-              bool islock = await context.read<ContactProvider>().LockContact();
-              if (islock) {
-                Navigator.pushNamed(context, '/favorites');
-              } else {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Contact Locked'),
-                  ),
-                );
-              }
-            },
-            icon: const Icon(Icons.star),
-          ),
+          // IconButton(
+          //   onPressed: () async {
+          //     bool islock = await context.read<ContactProvider>().LockContact();
+          //     if (islock) {
+          //       Navigator.pushNamed(context, '/hide');
+          //     } else {
+          //       ScaffoldMessenger.of(context).showSnackBar(
+          //         const SnackBar(
+          //           content: Text('Contact Locked'),
+          //         ),
+          //       );
+          //     }
+          //   },
+          //   icon: const Icon(Icons.lock),
+          // ),
+          // IconButton(
+          //   onPressed: () async {
+          //     bool islock = await context.read<ContactProvider>().LockContact();
+          //     if (islock) {
+          //       Navigator.pushNamed(context, '/favorites');
+          //     } else {
+          //       ScaffoldMessenger.of(context).showSnackBar(
+          //         const SnackBar(
+          //           content: Text('Contact Locked'),
+          //         ),
+          //       );
+          //     }
+          //   },
+          //   icon: const Icon(Icons.star),
+          // ),
           IconButton(
             onPressed: () {
               showDialog(
