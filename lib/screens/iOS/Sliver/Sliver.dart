@@ -14,8 +14,8 @@ class _iOSSliverState extends State<iOSSliver> {
     return CupertinoPageScaffold(
       child: CustomScrollView(
         slivers: [
-          CupertinoSliverNavigationBar(
-            largeTitle: const Text('Sliver'),
+          const CupertinoSliverNavigationBar(
+            largeTitle: Text('Sliver'),
           ),
           SliverList.builder(
             itemCount: 10,

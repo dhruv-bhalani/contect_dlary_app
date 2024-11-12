@@ -100,7 +100,7 @@ class _CountarState extends State<Countar> {
         onPressed: () {
           Navigator.of(context).pushNamed('/intro');
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

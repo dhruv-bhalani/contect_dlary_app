@@ -1,9 +1,7 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:contect_dlary_app/routes/routes.dart';
-import 'package:contect_dlary_app/screens/iOS/home/homepage.dart';
 import 'package:contect_dlary_app/screens/android/homepage/home_provider/homeprovider.dart';
 import 'package:contect_dlary_app/screens/android/countar/countar_provider/countar_provider.dart';
 
@@ -57,14 +55,14 @@ class MyApp extends StatelessWidget {
                     appBarTheme: const AppBarTheme(
                       backgroundColor: Colors.blue,
                     ),
-                    textTheme: const TextTheme(
-                      bodyMedium: TextStyle(
-                          color: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          // fontStyle: FontStyle.italic,
-                          fontFamily: 'poppins'),
-                    ),
+                    // textTheme: const TextTheme(
+                    //   bodyMedium: TextStyle(
+                    //       color: Colors.white,
+                    //       fontSize: 40,
+                    //       fontWeight: FontWeight.bold,
+                    //       // fontStyle: FontStyle.italic,
+                    //       fontFamily: 'poppins'),
+                    // ),
                     floatingActionButtonTheme:
                         const FloatingActionButtonThemeData(
                       backgroundColor: Colors.blue,
@@ -82,8 +80,8 @@ class MyApp extends StatelessWidget {
               : CupertinoApp(
                   debugShowCheckedModeBanner: false,
                   theme: context.watch<ContactProvider>().isdarkmode
-                      ? CupertinoThemeData(brightness: Brightness.dark)
-                      : CupertinoThemeData(brightness: Brightness.light),
+                      ? const CupertinoThemeData(brightness: Brightness.dark)
+                      : const CupertinoThemeData(brightness: Brightness.light),
                   routes: AppRoutesiOS.allRoutes,
                 );
         },

@@ -186,7 +186,7 @@ class _DetailState extends State<Detail> {
                       );
                     },
                     child: const Text(
-                      'upload Image',
+                      'Upload Image',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
@@ -255,19 +255,7 @@ class _DetailState extends State<Detail> {
                 color: Colors.blue,
               ),
             ),
-            // ListTile(
-            //   title: const Text("Dark Mode"),
-            //   trailing: Consumer<ContactProvider>(
-            //     builder: (BuildContext context, ContactProvider value,
-            //             Widget? child) =>
-            //         Switch(
-            //       value: context.watch<ContactProvider>().isdarkmode,
-            //       onChanged: (val) {
-            //         context.read<ContactProvider>().changeisDarkMode();
-            //       },
-            //     ),
-            //   ),
-            // ),
+            15.height,
             TextButton.icon(
               onPressed: () async {
                 DateTime? dT = await showDatePicker(
@@ -283,7 +271,7 @@ class _DetailState extends State<Detail> {
                     "Date",
                     style: TextStyle(fontSize: 20, color: Colors.blue),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     "${cR.date.day}/${cR.date.month}/${cR.date.year}",
                     style: TextStyle(color: Colors.blue.shade600),
@@ -309,7 +297,7 @@ class _DetailState extends State<Detail> {
                     "Time",
                     style: TextStyle(fontSize: 20, color: Colors.blue),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     "${cR.t1.hour}:${cR.t1.minute}",
                     style: TextStyle(color: Colors.blue.shade600),
@@ -323,50 +311,15 @@ class _DetailState extends State<Detail> {
               ),
             ),
             20.height,
-            Container(
-              height: 50,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.blue.shade600,
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Row(
-                children: [
-                  45.width,
-                  IconButton(
-                    onPressed: () {
-                      context.read<ContactProvider>().Favoritecontact(detail);
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.star,
-                    ),
-                  ),
-                  80.width,
-                  IconButton(
-                    onPressed: () {
-                      context.read<ContactProvider>().hidecontact(detail);
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.lock,
-                    ),
-                  ),
-                  80.width,
-                  IconButton(
-                    onPressed: () {
-                      Share.share(
-                          'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
-                    },
-                    icon: const Icon(
-                      Icons.share,
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Share.share(
+              'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
+        },
+        child: Icon(Icons.share),
       ),
     );
   }

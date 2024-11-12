@@ -22,66 +22,36 @@ class _HomepageState extends State<Homepage> {
       appBar: AppBar(
         title: const Text('Home'),
         actions: [
-          // IconButton(
-          //   onPressed: () async {
-          //     bool islock = await context.read<ContactProvider>().LockContact();
-          //     if (islock) {
-          //       Navigator.pushNamed(context, '/hide');
-          //     } else {
-          //       ScaffoldMessenger.of(context).showSnackBar(
-          //         const SnackBar(
-          //           content: Text('Contact Locked'),
-          //         ),
-          //       );
-          //     }
-          //   },
-          //   icon: const Icon(Icons.lock),
-          // ),
-          // IconButton(
-          //   onPressed: () async {
-          //     bool islock = await context.read<ContactProvider>().LockContact();
-          //     if (islock) {
-          //       Navigator.pushNamed(context, '/favorites');
-          //     } else {
-          //       ScaffoldMessenger.of(context).showSnackBar(
-          //         const SnackBar(
-          //           content: Text('Contact Locked'),
-          //         ),
-          //       );
-          //     }
-          //   },
-          //   icon: const Icon(Icons.star),
-          // ),
           IconButton(
             onPressed: () {
               showDialog(
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    title: const Text("Select Theme"),
-                    content: Row(
-                      children: [
-                        Switch(
-                          value: context.watch<ContactProvider>().isAndiroid,
-                          onChanged: (value) {
-                            context.read<ContactProvider>().changeisAndiroid();
-                          },
-                        ),
-                        Spacer(),
-                        Switch(
-                          value: context.watch<ContactProvider>().isdarkmode,
-                          onChanged: (value) {
-                            context.read<ContactProvider>().changeisDarkMode();
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    ),
-                  );
+                      content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Text(" Platform"),
+                      Switch(
+                        value: context.watch<ContactProvider>().isAndiroid,
+                        onChanged: (value) {
+                          context.read<ContactProvider>().changeisAndiroid();
+                        },
+                      ),
+                      const Text(" Theme"),
+                      Switch(
+                        value: context.watch<ContactProvider>().isdarkmode,
+                        onChanged: (value) {
+                          context.read<ContactProvider>().changeisDarkMode();
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ],
+                  ));
                 },
               );
             },
-            icon: Icon(Icons.dark_mode),
+            icon: const Icon(Icons.dark_mode),
           ),
         ],
       ),
@@ -105,7 +75,9 @@ class _HomepageState extends State<Homepage> {
                       "${context.watch<ContactProvider>().contactList[index].name}"),
                   subtitle: Text(
                     "${context.watch<ContactProvider>().contactList[index].number}",
-                    style: const TextStyle(fontSize: 15),
+                    style: const TextStyle(
+                      fontSize: 15,
+                    ),
                   ),
                   leading: CircleAvatar(
                     radius: 20,
@@ -120,42 +92,8 @@ class _HomepageState extends State<Homepage> {
               },
             ),
           ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     showModalBottomSheet(
-          //       context: context,
-          //       builder: (context) {
-          //         return Container(
-          //           height: 200,
-          //           color: Colors.white,
-          //           child: const Center(
-          //             child: Text('dhruv'),
-          //           ),
-          //         );
-          //       },
-          //     );
-          //   },
-          //   child: const Text("Add Contact"),
-          // ),
-          // ElevatedButton(
-          //   onPressed: () {
-          //     scaffoldKey.currentState!.showBottomSheet(
-          //       (context) {
-          //         return Container(
-          //           height: 200,
-          //           color: Colors.white,
-          //           child: const Center(
-          //             child: Text("Dhruv"),
-          //           ),
-          //         );
-          //       },
-          //     );
-          //   },
-          //   child: const Text("Add Contact"),
-          // ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.of(context).pushNamed('/addcontact');

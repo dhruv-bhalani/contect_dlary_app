@@ -19,10 +19,11 @@ class _iOSHomepageState extends State<iOSHomepage> {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         leading: CupertinoButton(
+          padding: EdgeInsets.zero,
           onPressed: () {
             Navigator.of(context).pushNamed('/countars');
           },
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
         ),
         middle: const Text('Home'),
         // trailing: CupertinoButton(
@@ -32,6 +33,7 @@ class _iOSHomepageState extends State<iOSHomepage> {
         //   child: Icon(Icons.star),
         // ),
         trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
           onPressed: () {
             showCupertinoDialog(
               context: context,
@@ -59,7 +61,7 @@ class _iOSHomepageState extends State<iOSHomepage> {
               },
             );
           },
-          child: Icon(Icons.dark_mode),
+          child: const Icon(Icons.settings_outlined),
         ),
       ),
       child: Column(
@@ -79,7 +81,7 @@ class _iOSHomepageState extends State<iOSHomepage> {
                     onPressed: () {
                       context.read<ContactProvider>().deletecontact(index);
                     },
-                    child: Icon(CupertinoIcons.delete),
+                    child: const Icon(CupertinoIcons.delete),
                   ),
                   title: Text(
                       "${context.watch<ContactProvider>().contactList[index].name}"),

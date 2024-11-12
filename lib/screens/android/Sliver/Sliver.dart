@@ -1,4 +1,3 @@
-import 'package:contect_dlary_app/utils/extension.dart';
 import 'package:flutter/material.dart';
 
 class Sliver extends StatefulWidget {
@@ -37,14 +36,14 @@ class _SliverState extends State<Sliver> {
             child: Container(
               height: 100,
               color: Colors.blue,
-              child: Text('SliverToBoxAdapter'),
+              child: const Text('SliverToBoxAdapter'),
             ),
           ),
           SliverToBoxAdapter(
             child: Container(
               height: 100,
               color: Colors.yellow,
-              child: Text('SliverToBoxAdapter'),
+              child: const Text('SliverToBoxAdapter'),
             ),
           ),
           SliverGrid(

@@ -230,11 +230,11 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                     CupertinoButton(
                       child: Row(
                         children: [
-                          Icon(CupertinoIcons.time),
+                          const Icon(CupertinoIcons.time),
                           const Text('Time'),
                           // Spacer(),
                           const Text(
-                              "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
+                              "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
                           Text(
                               "${context.watch<ContactProvider>().t1.hour}:${context.watch<ContactProvider>().t1.minute}"),
                         ],
@@ -264,30 +264,15 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                 )
               ],
             ),
-            110.height,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CupertinoButton(
-                  onPressed: () {
-                    context.read<ContactProvider>().Favoritecontact(detail);
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
-                    CupertinoIcons.star,
-                  ),
-                ),
-                Spacer(),
-                CupertinoButton(
-                  onPressed: () {
-                    Share.share(
-                        'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
-                  },
-                  child: const Icon(
-                    CupertinoIcons.share_up,
-                  ),
-                ),
-              ],
+            80.height,
+            CupertinoButton(
+              onPressed: () {
+                Share.share(
+                    'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
+              },
+              child: const Icon(
+                CupertinoIcons.share_up,
+              ),
             ),
           ],
         ),
