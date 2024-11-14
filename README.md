@@ -41,11 +41,13 @@ Platform Converter is a Flutter application that allows users to manage their co
 OUTPUT:
 
 ## Splashscreen,Introscreen
+
 <img src = "https://github.com/user-attachments/assets/b2170b99-8d87-4fa0-8ce3-baa731c57a88" width="200">1
 <img src = "https://github.com/user-attachments/assets/aeea0197-b710-4b16-8812-8d2f315ece1b" width="200">2
 <img src = "https://github.com/user-attachments/assets/6f7ce851-f6c9-46cd-9839-d2c4a7c5f3e5" width="200">3
 <img src = "https://github.com/user-attachments/assets/f459eda3-24bd-48f2-bc72-6a10635f3c10" width="200">4
-## Light mode
+
+## Light Theme
 <img src = "https://github.com/user-attachments/assets/a0140f7d-6349-4462-917a-e1f3d5718d1f" width="200">7
 <img src = "https://github.com/user-attachments/assets/bcc5e413-d4d2-4af4-aa3d-d30e270cea52" width="200">10
 <img src = "https://github.com/user-attachments/assets/4ad77f68-49e7-4e41-8b77-15126d669f57" width="200">11
