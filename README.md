@@ -65,6 +65,8 @@ https://github.com/user-attachments/assets/ee5c1220-e310-443a-9c20-66ab9645de53
 <img src = "https://github.com/user-attachments/assets/8029a314-9250-47e4-8510-9933c9474c7d" width="200">
 <img src = "https://github.com/user-attachments/assets/dac633b0-a947-4444-b4fd-3bc053b1b11f" width="200">
 <img src = "https://github.com/user-attachments/assets/2f64df84-c093-4456-95bf-dea9d91288d3" width="200">
+<img src = "https://github.com/user-attachments/assets/352fec6c-d5de-49a5-b65a-c1b745bc88c3" width="200">
+
 ## DarkTheme
 <img src = "https://github.com/user-attachments/assets/9522e09e-006e-4e00-a354-8a8b855d9c36" width="200">
 <img src = "https://github.com/user-attachments/assets/d4f11ee0-df37-4d02-9983-58fef40879d6" width="200">
