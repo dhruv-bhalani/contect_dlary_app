@@ -41,7 +41,9 @@ class _DetailState extends State<Detail> {
         ),
         title: const Text(
           'Detail',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
         actions: [
           IconButton(
@@ -54,11 +56,21 @@ class _DetailState extends State<Detail> {
                   builder: (context) {
                     return AlertDialog(
                       actions: [
-                        10.height,
-                        const Center(
-                          child: Text("Edit"),
+                        20.height,
+                        Center(
+                          child: Row(
+                            children: [
+                              const Text(
+                                "Edit",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              10.width,
+                              const Icon(Icons.edit),
+                            ],
+                          ),
                         ),
-                        10.height,
+                        20.height,
                         TextFormField(
                           keyboardType: TextInputType.name,
                           controller: txtname,
@@ -114,7 +126,7 @@ class _DetailState extends State<Detail> {
                                 .updatecontact(contact);
                             Navigator.pop(context);
                           },
-                          child: const Text('update'),
+                          child: const Text('Update'),
                         ),
                       ],
                     );
@@ -122,9 +134,12 @@ class _DetailState extends State<Detail> {
             },
             icon: const Icon(Icons.edit),
           ),
-          const SizedBox(
-            width: 10,
-          ),
+          IconButton(
+              onPressed: () {
+                Share.share(
+                    'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
+              },
+              icon: Icon(Icons.share))
         ],
       ),
       body: Padding(
@@ -313,13 +328,6 @@ class _DetailState extends State<Detail> {
             20.height,
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Share.share(
-              'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
-        },
-        child: Icon(Icons.share),
       ),
     );
   }

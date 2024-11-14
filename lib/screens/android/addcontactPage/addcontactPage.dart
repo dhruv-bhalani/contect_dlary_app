@@ -34,16 +34,39 @@ class _AddcontactpageState extends State<Addcontactpage> {
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {
-        //       Navigator.of(context).pushNamed('/countar');
-        //     },
-        //     icon: const Icon(
-        //       Icons.arrow_forward_ios,
-        //     ),
-        //   ),
-        // ],
+        actions: [
+          IconButton(
+            onPressed: () {
+              String name = txtname.text;
+              String email = txtemail.text;
+              String phone = txtphone.text;
+              File image = File(imagePath!);
+
+              ContactModel contact = ContactModel(
+                name: name,
+                number: phone,
+                email: email,
+                image: imagePath,
+              );
+              context.read<ContactProvider>().addcontact(contact);
+              Navigator.of(context).pop();
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text("Added Successfully"),
+                  shape: StadiumBorder(
+                    side: BorderSide(
+                      color: Colors.white,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.save,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -149,36 +172,6 @@ class _AddcontactpageState extends State<Addcontactpage> {
                   labelText: 'Email',
                   prefixIcon: Icon(Icons.email),
                 ),
-              ),
-              40.height,
-              ElevatedButton(
-                onPressed: () {
-                  String name = txtname.text;
-                  String email = txtemail.text;
-                  String phone = txtphone.text;
-                  File image = File(imagePath!);
-
-                  ContactModel contact = ContactModel(
-                    name: name,
-                    number: phone,
-                    email: email,
-                    image: imagePath,
-                  );
-                  context.read<ContactProvider>().addcontact(contact);
-                  Navigator.of(context).pop();
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("Added Successfully"),
-                      shape: StadiumBorder(
-                        side: BorderSide(
-                          color: Colors.white,
-                          style: BorderStyle.none,
-                        ),
-                      ),
-                    ),
-                  );
-                },
-                child: const Text('save'),
               ),
             ],
           ),

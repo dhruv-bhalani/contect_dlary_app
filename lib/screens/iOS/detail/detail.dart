@@ -41,7 +41,16 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
                 actions: [
                   10.height,
                   const Center(
-                    child: Text("Edit"),
+                    child: Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: Text(
+                        "Edit",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
                   ),
                   10.height,
                   CupertinoTextField(
@@ -188,92 +197,69 @@ class _iOSDetailPageState extends State<iOSDetailPage> {
               title: Text('${detail.number}'),
               leading: const Icon(Icons.sms_outlined),
             ),
-            40.height,
-            CupertinoActionSheet(
-              actions: [
-                CupertinoButton(
-                  child: Row(
-                    children: [
-                      const Icon(Icons.calendar_month),
-                      3.width,
-                      const Text('Date'),
-                      const Spacer(),
-                      Text(
-                          "${context.watch<ContactProvider>().date.day}/${context.watch<ContactProvider>().date.month}/${context.watch<ContactProvider>().date.year}"),
-                    ],
-                  ),
-                  onPressed: () {
-                    showCupertinoModalPopup(
-                      context: context,
-                      builder: (context) {
-                        return Container(
-                          height: 300,
-                          color: Colors.white,
-                          child: CupertinoDatePicker(
-                              mode: CupertinoDatePickerMode.date,
-                              onDateTimeChanged: (value) {
-                                context
-                                    .read<ContactProvider>()
-                                    .changeDatetime(value);
-                              },
-                              initialDateTime: DateTime.now(),
-                              minimumYear: 1900,
-                              maximumYear: 3000),
-                        );
-                      },
-                    );
-                  },
-                ),
-                10.height,
-                Row(
-                  children: [
-                    CupertinoButton(
-                      child: Row(
-                        children: [
-                          const Icon(CupertinoIcons.time),
-                          const Text('Time'),
-                          // Spacer(),
-                          const Text(
-                              "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t"),
-                          Text(
-                              "${context.watch<ContactProvider>().t1.hour}:${context.watch<ContactProvider>().t1.minute}"),
-                        ],
-                      ),
-                      onPressed: () {
-                        showCupertinoModalPopup(
-                          context: context,
-                          builder: (context) {
-                            return Container(
-                              height: 300,
-                              color: Colors.white,
-                              child: CupertinoDatePicker(
-                                  mode: CupertinoDatePickerMode.time,
-                                  initialDateTime: DateTime.now(),
-                                  onDateTimeChanged: (value) {
-                                    context.read<ContactProvider>().changeTime(
-                                        TimeOfDay(
-                                            hour: value.hour,
-                                            minute: value.minute));
-                                  }),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
-                )
-              ],
-            ),
-            80.height,
-            CupertinoButton(
-              onPressed: () {
+            20.height,
+            CupertinoListTile(
+              onTap: () {
                 Share.share(
                     'Name: ${detail.name}\nNumber: ${detail.number}\nEmail: ${detail.email}');
               },
-              child: const Icon(
+              title: const Text('share'),
+              leading: const Icon(
                 CupertinoIcons.share_up,
               ),
             ),
+            50.height,
+            CupertinoListTile(
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 300,
+                      color: Colors.white.withAlpha(100),
+                      child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.time,
+                        initialDateTime: DateTime.now(),
+                        onDateTimeChanged: (value) {
+                          context.read<ContactProvider>().changeTime(TimeOfDay(
+                              hour: value.hour, minute: value.minute));
+                        },
+                      ),
+                    );
+                  },
+                );
+              },
+              leading: const Icon(CupertinoIcons.time),
+              trailing: Text(
+                  "${context.watch<ContactProvider>().t1.hour}:${context.watch<ContactProvider>().t1.minute}"),
+              title: const Text("Time"),
+            ),
+            CupertinoListTile(
+              onTap: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      color: Colors.white.withAlpha(100),
+                      height: 300,
+                      child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.date,
+                        onDateTimeChanged: (value) {
+                          context.read<ContactProvider>().changeDatetime(value);
+                        },
+                        initialDateTime: DateTime.now(),
+                        minimumYear: 1900,
+                        maximumYear: 3000,
+                      ),
+                    );
+                  },
+                );
+              },
+              leading: const Icon(Icons.calendar_month),
+              trailing: Text(
+                  "${context.watch<ContactProvider>().date.day}/${context.watch<ContactProvider>().date.month}/${context.watch<ContactProvider>().date.year}"),
+              title: const Text("Date"),
+            )
           ],
         ),
       ),

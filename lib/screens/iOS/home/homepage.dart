@@ -26,42 +26,38 @@ class _iOSHomepageState extends State<iOSHomepage> {
           child: const Icon(Icons.add),
         ),
         middle: const Text('Home'),
-        // trailing: CupertinoButton(
-        //   onPressed: () {
-        //     Navigator.pushNamed(context, '/favorites');
-        //   },
-        //   child: Icon(Icons.star),
-        // ),
         trailing: CupertinoButton(
           padding: EdgeInsets.zero,
           onPressed: () {
-            showCupertinoDialog(
-              context: context,
-              builder: (context) {
-                return CupertinoAlertDialog(
-                  actions: [
-                    const Center(child: Text('Plat form')),
-                    CupertinoSwitch(
-                      value: context.watch<ContactProvider>().isAndiroid,
-                      onChanged: (value) {
-                        context.read<ContactProvider>().changeisAndiroid();
-                      },
-                    ),
-                    10.height,
-                    const Center(child: Text('Theme')),
-                    CupertinoSwitch(
-                      value: context.watch<ContactProvider>().isdarkmode,
-                      onChanged: (value) {
-                        context.read<ContactProvider>().changeisDarkMode();
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
+            Navigator.of(context).pushNamed('/profile');
           },
-          child: const Icon(Icons.settings_outlined),
+          //   showCupertinoDialog(
+          //     context: context,
+          //     builder: (context) {
+          //       return CupertinoAlertDialog(
+          //         actions: [
+          //           const Center(child: Text('Plat form')),
+          //           CupertinoSwitch(
+          //             value:
+          //             onChanged: (value) {
+          //
+          //             },
+          //           ),
+          //           10.height,
+          //           const Center(child: Text('Theme')),
+          //           CupertinoSwitch(
+          //             value:
+          //             onChanged: (value) {
+          //               context.read<ContactProvider>().changeisDarkMode();
+          //               Navigator.pop(context);
+          //             },
+          //           ),
+          //         ],
+          //       );
+          //     },
+          //   );
+          // },
+          child: const Icon(Icons.person),
         ),
       ),
       child: Column(

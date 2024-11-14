@@ -21,19 +21,14 @@ class _IntroductionState extends State<Introduction> {
             image: Image.asset("lib/assets/image/3.jpg"),
           ),
           PageViewModel(
-            title: "Welcome",
-            body: "This is the body text",
+            title: "Hello",
+            body: "",
             image: Image.asset('lib/assets/image/5.jpg'),
           ),
           PageViewModel(
-            title: "Welcome",
-            body: "This is the body text",
+            title: "Coding",
+            body: "",
             image: Image.asset('lib/assets/image/4.jpg'),
-          ),
-          PageViewModel(
-            title: "Welcome",
-            body: "This is the body text",
-            image: Image.asset('lib/assets/image/6.jpg'),
           ),
         ],
         done: const Text('Done'),

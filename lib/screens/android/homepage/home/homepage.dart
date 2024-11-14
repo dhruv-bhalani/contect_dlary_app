@@ -24,75 +24,54 @@ class _HomepageState extends State<Homepage> {
         actions: [
           IconButton(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                      content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(" Platform"),
-                      Switch(
-                        value: context.watch<ContactProvider>().isAndiroid,
-                        onChanged: (value) {
-                          context.read<ContactProvider>().changeisAndiroid();
-                        },
-                      ),
-                      const Text(" Theme"),
-                      Switch(
-                        value: context.watch<ContactProvider>().isdarkmode,
-                        onChanged: (value) {
-                          context.read<ContactProvider>().changeisDarkMode();
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ],
-                  ));
-                },
-              );
+              Navigator.of(context).pushNamed('/profile');
             },
-            icon: const Icon(Icons.dark_mode),
+            icon: const Icon(Icons.person_rounded),
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: context.watch<ContactProvider>().contactList.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  onTap: () {
-                    context.read<ContactProvider>().setSelectedIndex(index);
-                    Navigator.of(context).pushNamed('/Detail',
-                        arguments:
-                            context.read<ContactProvider>().contactList[index]);
-                  },
-                  onLongPress: () {
-                    context.read<ContactProvider>().deletecontact(index);
-                  },
-                  title: Text(
-                      "${context.watch<ContactProvider>().contactList[index].name}"),
-                  subtitle: Text(
-                    "${context.watch<ContactProvider>().contactList[index].number}",
-                    style: const TextStyle(
-                      fontSize: 15,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: context.watch<ContactProvider>().contactList.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    onTap: () {
+                      context.read<ContactProvider>().setSelectedIndex(index);
+                      Navigator.of(context).pushNamed('/Detail',
+                          arguments: context
+                              .read<ContactProvider>()
+                              .contactList[index]);
+                    },
+                    onLongPress: () {
+                      context.read<ContactProvider>().deletecontact(index);
+                    },
+                    title: Text(
+                        "${context.watch<ContactProvider>().contactList[index].name}"),
+                    subtitle: Text(
+                      "${context.watch<ContactProvider>().contactList[index].number}",
+                      style: const TextStyle(
+                        fontSize: 15,
+                      ),
                     ),
-                  ),
-                  leading: CircleAvatar(
-                    radius: 20,
-                    foregroundImage: FileImage(
-                      File(context
-                          .watch<ContactProvider>()
-                          .contactList[index]
-                          .image!),
+                    leading: CircleAvatar(
+                      radius: 20,
+                      foregroundImage: FileImage(
+                        File(context
+                            .watch<ContactProvider>()
+                            .contactList[index]
+                            .image!),
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

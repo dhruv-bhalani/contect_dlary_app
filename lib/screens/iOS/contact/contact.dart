@@ -25,8 +25,30 @@ class _iOSContactState extends State<iOSContact> {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: const CupertinoNavigationBar(
-        middle: Text('Contact'),
+      navigationBar: CupertinoNavigationBar(
+        middle: const Text('Contact'),
+        trailing: CupertinoButton(
+          padding: EdgeInsets.zero,
+          child: const Text('Save'),
+          onPressed: () {
+            String name = txtname.text;
+            String email = txtemail.text;
+            String phone = txtphone.text;
+
+            ContactModel contact = ContactModel(
+              name: name,
+              number: phone,
+              email: email,
+              image: imagePath,
+            );
+            context.read<ContactProvider>().addcontact(contact);
+            Navigator.pop(context);
+            txtname.clear();
+            txtphone.clear();
+            txtemail.clear();
+            imagePath = null;
+          },
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.only(
@@ -117,29 +139,6 @@ class _iOSContactState extends State<iOSContact> {
                 keyboardType: TextInputType.emailAddress,
               ),
               50.height,
-              CupertinoButton(
-                onPressed: () {
-                  String name = txtname.text;
-                  String email = txtemail.text;
-                  String phone = txtphone.text;
-
-                  ContactModel contact = ContactModel(
-                    name: name,
-                    number: phone,
-                    email: email,
-                    image: imagePath,
-                  );
-                  context.read<ContactProvider>().addcontact(contact);
-                  Navigator.pop(context);
-                  txtname.clear();
-                  txtphone.clear();
-                  txtemail.clear();
-                  imagePath = null;
-                },
-                child: const Text(
-                  'Save',
-                ),
-              ),
             ],
           ),
         ),
