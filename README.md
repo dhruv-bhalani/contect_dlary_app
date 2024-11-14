@@ -40,6 +40,12 @@ Platform Converter is a Flutter application that allows users to manage their co
 
 OUTPUT:
 
+
+
+https://github.com/user-attachments/assets/ee5c1220-e310-443a-9c20-66ab9645de53
+
+
+
 ## Splashscreen,Introscreen
 
 <img src = "https://github.com/user-attachments/assets/b2170b99-8d87-4fa0-8ce3-baa731c57a88" width="200">
