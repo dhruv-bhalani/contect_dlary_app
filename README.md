@@ -74,3 +74,8 @@ OUTPUT:
 <img src = "https://github.com/user-attachments/assets/2f64df84-c093-4456-95bf-dea9d91288d3" width="200">
 <img src = "https://github.com/user-attachments/assets/9522e09e-006e-4e00-a354-8a8b855d9c36" width="200">
 <img src = "https://github.com/user-attachments/assets/d4f11ee0-df37-4d02-9983-58fef40879d6" width="200">
+<img src = "https://github.com/user-attachments/assets/61d19358-9b32-4b62-a214-6b8b085d8ed3" width="200">
+<img src = "https://github.com/user-attachments/assets/595514c7-5fcd-45bf-9758-29bd73f6364f" width="200">
+<img src = "https://github.com/user-attachments/assets/db9bedcd-5d0e-4b84-9946-a55f1f85476e" width="200">
+<img src = "https://github.com/user-attachments/assets/a4aebfb7-f9bb-46e9-94b3-9c6691ee688f" width="200">
+
