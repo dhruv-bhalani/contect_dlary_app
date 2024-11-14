@@ -25,18 +25,16 @@ Platform Converter is a Flutter application that allows users to manage their co
 
 ## Packages Used
 
-- shared_preferences
-- cupertino_icons
-- image_picker
-- provider
-- flutter_launcher_icons
-- shared_preferences
-- introduction_screen
-- flutter_slidable
-- url_launcher
-- alphabet_slider
-- local_auth
-- share_plus
+  - cupertino_icons:
+  - adaptive_theme: 
+  - image_picker:
+  - provider: 
+  - introduction_screen: 
+  - shared_preferences: 
+  - url_launcher: 
+  - share_plus: 
+  - local_auth:
+  - global_bottom_navigation_bar:
 
 OUTPUT:
 
